@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b7fc4" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="TideX" />
+    <title>TideX</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Noto+Sans:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+    <main class="app-shell">
+      <header class="card top-card reveal">
+        <div>
+          <h1 id="title" data-i18n="title">TideX</h1>
+          <p id="subtitle" data-i18n="subtitle"></p>
+        </div>
+        <div class="lang-box">
+          <label for="language" data-i18n="languageLabel"></label>
+          <select id="language" aria-label="Language"></select>
+        </div>
+      </header>
+
+      <section class="layout-grid">
+        <section class="card map-card reveal">
+          <div class="row header-row">
+            <h2 data-i18n="mapSection"></h2>
+            <button id="locate-btn" class="ghost-btn" type="button" data-i18n="locateMe"></button>
+          </div>
+          <div class="location-pill" id="location-pill"></div>
+          <div id="map" role="application" aria-label="Map"></div>
+          <p class="hint" data-i18n="mapHint"></p>
+
+          <div class="beach-wrap">
+            <div class="row">
+              <h3 data-i18n="nearbyBeaches"></h3>
+              <span id="beach-meta" class="meta-text"></span>
+            </div>
+            <div id="beach-list" class="chip-list"></div>
+          </div>
+        </section>
+
+        <section class="card tide-card reveal">
+          <div class="control-grid">
+            <div class="control-item">
+              <label for="date-input" data-i18n="dateLabel"></label>
+              <input id="date-input" type="date" />
+            </div>
+
+            <div class="control-item">
+              <label for="hour-input" data-i18n="hourLabel"></label>
+              <div class="hour-wrap">
+                <input id="hour-input" type="range" min="0" max="23" step="1" value="12" />
+                <span id="hour-value">12:00</span>
+              </div>
+            </div>
+
+            <div class="quick-actions">
+              <button id="prev-day-btn" type="button" class="ghost-btn" data-i18n="prevDay"></button>
+              <button id="now-btn" type="button" class="accent-btn" data-i18n="now"></button>
+              <button id="next-day-btn" type="button" class="ghost-btn" data-i18n="nextDay"></button>
+              <button id="refresh-btn" type="button" class="ghost-btn" data-i18n="refresh"></button>
+            </div>
+          </div>
+
+          <div class="source-row">
+            <span class="source-pill" id="source-pill"></span>
+            <span class="meta-text" id="timezone-pill"></span>
+          </div>
+
+          <div id="chart" aria-label="Tide chart"></div>
+
+          <div class="stats-grid">
+            <article class="stat-item">
+              <span data-i18n="currentLevel"></span>
+              <strong id="current-level">--</strong>
+              <small id="current-level-time">--</small>
+            </article>
+            <article class="stat-item">
+              <span data-i18n="dailyHigh"></span>
+              <strong id="daily-high">--</strong>
+              <small id="daily-high-time">--</small>
+            </article>
+            <article class="stat-item">
+              <span data-i18n="dailyLow"></span>
+              <strong id="daily-low">--</strong>
+              <small id="daily-low-time">--</small>
+            </article>
+          </div>
+
+          <p class="hint" id="status-text"></p>
+          <p class="disclaimer" data-i18n="disclaimer"></p>
+        </section>
+      </section>
+    </main>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <script type="module" src="./app.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("./service-worker.js").catch(function () {});
+        });
+      }
+    </script>
+  </body>
+</html>
