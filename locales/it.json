@@ -1,0 +1,80 @@
+{
+  "code": "it",
+  "label": "Italiano",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Maree in tempo reale e previsioni per qualsiasi costa del mondo",
+    "languageLabel": "Lingua",
+    "mapSection": "Posizione e spiagge",
+    "locateMe": "Usa la mia posizione",
+    "mapHint": "Tocca la mappa per scegliere qualsiasi costa. Sotto trovi le spiagge vicine.",
+    "nearbyBeaches": "Spiagge vicine",
+    "dateLabel": "Data",
+    "hourLabel": "Ora",
+    "prevDay": "Giorno prec.",
+    "now": "Adesso",
+    "nextDay": "Giorno succ.",
+    "refresh": "Aggiorna",
+    "currentLevel": "Ora selezionata",
+    "currentWind": "Raffica a quell'ora",
+    "rangeSection": "Panoramica maree di 15 giorni",
+    "dailyHigh": "Alta marea giornaliera",
+    "dailyLow": "Bassa marea giornaliera",
+    "disclaimer": "Solo come riferimento. Non usare come unica fonte per navigazione o sicurezza.",
+    "locating": "Rilevamento posizione...",
+    "locationDenied": "Accesso alla posizione negato. Puoi scegliere sulla mappa.",
+    "locationError": "Errore di posizione. Scegli un punto sulla mappa.",
+    "locationUnsupported": "Il browser non supporta la geolocalizzazione.",
+    "loading": "Caricamento dati di marea...",
+    "fetchError": "Impossibile caricare i dati per questo punto.",
+    "sourceObserved": "Fonte: Open-Meteo Marine",
+    "sourceHybrid": "Fonte: serie diretta + completamento armonico",
+    "sourcePredicted": "Fonte: previsione armonica (fallback)",
+    "timezoneLabel": "Fuso orario: {tz}",
+    "beachCount": "{count} spiagge",
+    "noneBeaches": "Nessuna spiaggia nominata trovata nelle vicinanze.",
+    "selectedLocation": "Selezionato",
+    "myLocation": "La mia posizione",
+    "fallbackNotice": "Usata previsione armonica perché la serie diretta non è disponibile per questa data.",
+    "tideHigh": "Alta",
+    "tideLow": "Bassa",
+    "windowHigh": "max 15 g",
+    "windowLow": "min 15 g"
+  },
+  "seriesLabels": {
+    "tide": "Marea",
+    "wind": "Raffica"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "Nord",
+      "Nord-est",
+      "Est",
+      "Sud-est",
+      "Sud",
+      "Sud-ovest",
+      "Ovest",
+      "Nord-ovest"
+    ]
+  },
+  "windStrengthLabels": [
+    "Calmo",
+    "Leggero",
+    "Brezza",
+    "Moderato",
+    "Forte",
+    "Burrasca"
+  ]
+}

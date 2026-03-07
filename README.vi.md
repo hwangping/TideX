@@ -1,94 +1,87 @@
 # TideX
 
-TideX là ứng dụng web thủy triều toàn cầu được thiết kế ưu tiên di động. Người dùng có thể mở trực tiếp trên trình duyệt điện thoại (đã triển khai trên Vercel), chọn bất kỳ điểm bờ biển nào trên bản đồ, xem xu hướng mực nước biển và thời gian triều cao chính xác trong ngày.
+Triều theo thời gian thực và dự báo cho mọi bờ biển trên thế giới
 
-## Truy cập trực tuyến
+Ứng dụng trực tuyến: [https://tide-x.vercel.app](https://tide-x.vercel.app)
 
-- Môi trường production (Vercel): `https://tide-x.vercel.app`
+## Tổng quan
 
-## Định hướng dự án
+TideX hiện là một ứng dụng web thủy triều duy nhất được triển khai từ thư mục gốc của kho mã. Với người dùng GitHub, điều này có nghĩa là một codebase duy nhất cho desktop, trình duyệt di động và cài đặt lên màn hình chính.
 
-- Người dùng mục tiêu: lướt sóng, câu cá ven bờ, du lịch biển, hoạt động cảng
-- Giá trị cốt lõi: chọn điểm toàn cầu, trực quan rõ ràng, thao tác mượt, không cần cài app
-- Cách triển khai: frontend tĩnh thuần túy, dễ host trên Vercel/GitHub Pages/Netlify
+## Điểm nổi bật
 
-## Tính năng chính
+- Chọn bất kỳ điểm ven biển nào trên bản đồ hoặc chuyển thẳng tới vị trí hiện tại.
+- Tìm các bãi biển có tên ở gần từ dữ liệu OpenStreetMap.
+- Xem đường cong thủy triều 24 giờ với mốc giờ triều cao và đường tham chiếu 15 ngày.
+- So sánh độ cao thủy triều, gió giật và hướng gió trong cùng một chế độ xem.
+- Duyệt ngày quá khứ, hiện tại và tương lai với cơ chế fallback điều hòa ngoài cửa sổ dữ liệu trực tiếp.
+- Dùng cùng một PWA đáp ứng trên desktop, web di động và màn hình chính.
 
-- Chọn vị trí bờ biển toàn cầu trên bản đồ
-- Tự động lấy vị trí người dùng
-- Danh sách bãi biển gần đó từ OpenStreetMap
-- Biểu đồ thủy triều 24 giờ
-- Đánh dấu thời gian triều cao trên biểu đồ
-- Chọn ngày/giờ quá khứ, hiện tại, tương lai
-- Tự động dùng dự báo điều hòa khi thiếu chuỗi dữ liệu trực tiếp
-- Giao diện đa ngôn ngữ với 12 ngôn ngữ
+## Nguồn dữ liệu miễn phí
 
-## Trải nghiệm di động
+- Open-Meteo Marine: chuỗi thủy triều / mực nước biển
+- Open-Meteo Forecast: tốc độ gió giật và hướng gió
+- Ô bản đồ OpenStreetMap: bản đồ nền
+- Overpass API: tìm bãi biển lân cận
+- Nominatim: mã hóa địa lý ngược cho điểm đã chọn
 
-- Giao diện responsive cho iPhone và Android
-- Tối ưu thao tác chạm cho bản đồ, thanh trượt, nút bấm
-- Thiết kế hiện đại, dễ đọc ngoài trời
-- Frontend nhẹ, phản hồi nhanh
+## Cách dự báo
 
-## Nguồn dữ liệu và logic dự báo (đều miễn phí)
+1. Ưu tiên chuỗi thủy triều trực tiếp khi có sẵn cho điểm và ngày đã chọn.
+1. Làm mượt đường cong trong ngày bằng nội suy bậc ba đơn điệu.
+1. Bù các đoạn thiếu bằng phần hoàn thiện điều hòa.
+1. Khi không có dữ liệu trực tiếp, hệ thống quay về mô hình thủy triều điều hòa.
+1. Tinh chỉnh giờ triều cao bằng phát hiện cực trị cục bộ và nội suy bậc hai.
 
-- Chuỗi mực nước biển/thủy triều: Open-Meteo Marine API
-- Bản đồ nền: OpenStreetMap
-- POI bãi biển: OpenStreetMap Overpass API
-- Reverse geocoding: Nominatim
-- Dự báo: khớp điều hòa từ dữ liệu lịch sử khi thiếu dữ liệu ngày mục tiêu
+## Cài như ứng dụng
 
-## Thuật Toán Dự Báo (Tóm Tắt)
+1. Mở [https://tide-x.vercel.app](https://tide-x.vercel.app) bằng Safari, Chrome hoặc trình duyệt hiện đại khác.
+1. Dùng `Thêm vào màn hình chính` hoặc `Cài đặt ứng dụng` từ menu trình duyệt.
+1. Khởi chạy TideX như một ứng dụng bình thường trong khi vẫn dùng cùng một bản triển khai web.
 
-TideX dùng chiến lược 2 bước: ưu tiên dữ liệu trực tiếp, thiếu thì dùng mô hình dự báo.
+## Quốc tế hóa
 
-- Ưu tiên chuỗi trực tiếp: nếu có dữ liệu mực nước theo giờ cho ngày chọn, hệ thống dùng trực tiếp.
-- Làm mượt đường cong: chuỗi theo giờ được nội suy bậc ba đơn điệu để tăng độ mịn.
-- Dự báo thay thế: khi thiếu dữ liệu trực tiếp, TideX khớp mô hình điều hòa từ dữ liệu lịch sử.
-- Cách khớp mô hình: nhiều thành phần triều (cơ sở sin/cos) được ước lượng bằng bình phương tối thiểu.
-- Thời điểm triều cao: phát hiện cực trị cục bộ rồi tinh chỉnh bằng nội suy bậc hai.
+- Gói ngôn ngữ runtime nằm trong `locales/` và được tải từ JSON.
+- Kho mã có 42 gói ngôn ngữ, bao gồm hỗ trợ RTL cho tiếng Ả Rập, Do Thái và Urdu.
+- Sau khi chỉnh sửa tệp ngôn ngữ, chạy `node scripts/generate-locales.mjs` để tạo lại `locales/index.json`.
 
-## Công nghệ sử dụng
+## Cấu trúc dự án
 
-- Frontend: HTML + CSS + JavaScript
-- Bản đồ: Leaflet
-- Biểu đồ: ECharts
-- Xử lý thời gian: Luxon
-- Triển khai: Vercel (static hosting)
+```text
+TideX/
+├─ index.html
+├─ styles.css
+├─ app.js
+├─ locales/
+├─ icons/
+├─ manifest.webmanifest
+├─ service-worker.js
+├─ offline.html
+├─ scripts/
+│  ├─ generate-locales.mjs
+│  └─ generate-readmes.mjs
+├─ README.md
+└─ README.<locale>.md
+```
 
-## Chạy local
+## Phát triển cục bộ
+
+Phục vụ thư mục gốc của kho mã bằng bất kỳ máy chủ tĩnh nào:
 
 ```bash
 cd TideX
 python3 -m http.server 5173
 ```
 
-Mở: `http://localhost:5173`
+Sau đó mở `http://localhost:5173`.
 
-## Gợi ý cấu hình Vercel
+## Triển khai
 
-- Framework Preset: `Other`
-- Build Command: để trống (site tĩnh)
-- Output Directory: để trống (deploy thư mục gốc)
-- Bật HTTPS để định vị ổn định hơn trên di động
+- Triển khai thư mục gốc lên Vercel, Netlify, Cloudflare Pages hoặc bất kỳ dịch vụ static hosting nào.
+- Không cần bước build.
+- Ứng dụng gốc đã bao gồm manifest PWA, biểu tượng và service worker.
 
-## README các ngôn ngữ
+## Lưu ý
 
-- English: [`README.en.md`](./README.en.md)
-- 简体中文: [`README.zh-CN.md`](./README.zh-CN.md)
-- 繁體中文: [`README.zh-TW.md`](./README.zh-TW.md)
-- 日本語: [`README.ja.md`](./README.ja.md)
-- 한국어: [`README.ko.md`](./README.ko.md)
-- Français: [`README.fr.md`](./README.fr.md)
-- Español: [`README.es.md`](./README.es.md)
-- Deutsch: [`README.de.md`](./README.de.md)
-- Italiano: [`README.it.md`](./README.it.md)
-- Tiếng Việt: [`README.vi.md`](./README.vi.md)
-- ไทย: [`README.th.md`](./README.th.md)
-- Bahasa Melayu: [`README.ms.md`](./README.ms.md)
-
-## Lưu ý miễn trừ
-
-- Dự án chỉ dùng để tham khảo và lập kế hoạch.
-- Không dùng làm nguồn duy nhất cho điều hướng hoặc an toàn.
-- Điều kiện thực tế có thể khác do gió, áp suất, địa hình ven biển.
+- TideX dành cho lập kế hoạch chuyến đi và bối cảnh bãi biển, không phải công cụ hàng hải được chứng nhận.
+- Điều kiện thực tế có thể khác do áp suất, sóng, dòng sông, địa hình đáy biển cục bộ và thời tiết.

@@ -1,0 +1,80 @@
+{
+  "code": "ja",
+  "label": "日本語",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "世界中の海岸でリアルタイム潮位と予測を表示",
+    "languageLabel": "言語",
+    "mapSection": "位置とビーチ",
+    "locateMe": "現在地を使う",
+    "mapHint": "地図をタップして任意の沿岸地点を選択。近くのビーチは下に表示されます。",
+    "nearbyBeaches": "近くのビーチ",
+    "dateLabel": "日付",
+    "hourLabel": "時刻",
+    "prevDay": "前日",
+    "now": "現在",
+    "nextDay": "翌日",
+    "refresh": "更新",
+    "currentLevel": "選択時刻",
+    "currentWind": "その時刻の突風",
+    "rangeSection": "15日間の潮汐概況",
+    "dailyHigh": "当日の満潮",
+    "dailyLow": "当日の干潮",
+    "disclaimer": "計画の参考用です。航行や安全判断の唯一情報源として使わないでください。",
+    "locating": "現在地を取得中...",
+    "locationDenied": "位置情報が拒否されました。地図から手動選択できます。",
+    "locationError": "位置情報の取得に失敗しました。地図で選択してください。",
+    "locationUnsupported": "このブラウザは位置情報に対応していません。",
+    "loading": "潮汐データを読み込み中...",
+    "fetchError": "この地点のデータを取得できませんでした。",
+    "sourceObserved": "ソース: Open-Meteo Marine",
+    "sourceHybrid": "ソース: 直接系列 + 調和補完",
+    "sourcePredicted": "ソース: 調和予測 (フォールバック)",
+    "timezoneLabel": "タイムゾーン: {tz}",
+    "beachCount": "{count} 件のビーチ",
+    "noneBeaches": "近くに名前付きビーチが見つかりません。",
+    "selectedLocation": "選択地点",
+    "myLocation": "現在地",
+    "fallbackNotice": "この日付の直接系列がないため、調和予測を使用しています。",
+    "tideHigh": "満潮",
+    "tideLow": "干潮",
+    "windowHigh": "15日最高",
+    "windowLow": "15日最低"
+  },
+  "seriesLabels": {
+    "tide": "潮位",
+    "wind": "突風"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "北",
+      "北東",
+      "東",
+      "南東",
+      "南",
+      "南西",
+      "西",
+      "北西"
+    ],
+    "full": [
+      "北",
+      "北東",
+      "東",
+      "南東",
+      "南",
+      "南西",
+      "西",
+      "北西"
+    ]
+  },
+  "windStrengthLabels": [
+    "静穏",
+    "弱い",
+    "そよ風",
+    "中程度",
+    "強い",
+    "強風"
+  ]
+}

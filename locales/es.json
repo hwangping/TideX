@@ -1,0 +1,80 @@
+{
+  "code": "es",
+  "label": "Español",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Mareas en tiempo real y pronóstico para cualquier costa del mundo",
+    "languageLabel": "Idioma",
+    "mapSection": "Ubicación y playas",
+    "locateMe": "Usar mi ubicación",
+    "mapHint": "Toca el mapa para elegir cualquier costa. Abajo verás playas cercanas.",
+    "nearbyBeaches": "Playas cercanas",
+    "dateLabel": "Fecha",
+    "hourLabel": "Hora",
+    "prevDay": "Día anterior",
+    "now": "Ahora",
+    "nextDay": "Día siguiente",
+    "refresh": "Actualizar",
+    "currentLevel": "Hora seleccionada",
+    "currentWind": "Ráfaga en ese momento",
+    "rangeSection": "Panorama de mareas de 15 días",
+    "dailyHigh": "Pleamar del día",
+    "dailyLow": "Bajamar del día",
+    "disclaimer": "Solo para referencia de planificación. No usar como única fuente para navegación o seguridad.",
+    "locating": "Detectando tu ubicación...",
+    "locationDenied": "Permiso de ubicación denegado. Puedes elegir en el mapa.",
+    "locationError": "Error de ubicación. Elige un punto en el mapa.",
+    "locationUnsupported": "Tu navegador no admite geolocalización.",
+    "loading": "Cargando datos de marea...",
+    "fetchError": "No se pudo cargar la información para este punto.",
+    "sourceObserved": "Fuente: Open-Meteo Marine",
+    "sourceHybrid": "Fuente: serie directa + completado armónico",
+    "sourcePredicted": "Fuente: predicción armónica (respaldo)",
+    "timezoneLabel": "Zona horaria: {tz}",
+    "beachCount": "{count} playas",
+    "noneBeaches": "No se encontraron playas con nombre cerca.",
+    "selectedLocation": "Seleccionado",
+    "myLocation": "Mi ubicación",
+    "fallbackNotice": "Se usa predicción armónica porque no hay serie directa para esta fecha.",
+    "tideHigh": "Pleamar",
+    "tideLow": "Bajamar",
+    "windowHigh": "máx. 15 d",
+    "windowLow": "mín. 15 d"
+  },
+  "seriesLabels": {
+    "tide": "Marea",
+    "wind": "Ráfaga"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "Norte",
+      "Noreste",
+      "Este",
+      "Sureste",
+      "Sur",
+      "Suroeste",
+      "Oeste",
+      "Noroeste"
+    ]
+  },
+  "windStrengthLabels": [
+    "Calma",
+    "Ligero",
+    "Brisa",
+    "Moderado",
+    "Fuerte",
+    "Temporal"
+  ]
+}

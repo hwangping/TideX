@@ -1,0 +1,80 @@
+{
+  "code": "tr",
+  "label": "Türkçe",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Dünyadaki herhangi bir kıyı için gerçek zamanlı ve tahmini gelgitler",
+    "languageLabel": "Dil",
+    "mapSection": "Konum ve plajlar",
+    "locateMe": "Konumumu kullan",
+    "mapHint": "Herhangi bir kıyıyı seçmek için haritaya dokunun. Yakındaki plajlar aşağıda listelenir.",
+    "nearbyBeaches": "Yakındaki plajlar",
+    "dateLabel": "Tarih",
+    "hourLabel": "Saat",
+    "prevDay": "Önceki gün",
+    "now": "Şimdi",
+    "nextDay": "Sonraki gün",
+    "refresh": "Yenile",
+    "currentLevel": "Seçilen saat",
+    "currentWind": "Bu saatteki esinti",
+    "rangeSection": "15 günlük gelgit görünümü",
+    "dailyHigh": "Günün en yüksek gelgiti",
+    "dailyLow": "Günün en düşük gelgiti",
+    "disclaimer": "Yalnızca planlama referansı içindir. Seyir veya güvenlik kararlarında tek kaynak olarak kullanmayın.",
+    "locating": "Konumunuz algılanıyor...",
+    "locationDenied": "Konum erişimi reddedildi. Yine de haritadan seçebilirsiniz.",
+    "locationError": "Konum alınamadı. Lütfen haritadan seçin.",
+    "locationUnsupported": "Tarayıcınız coğrafi konumu desteklemiyor.",
+    "loading": "Gelgit verileri yükleniyor...",
+    "fetchError": "Bu nokta için veriler şu anda yüklenemiyor.",
+    "sourceObserved": "Kaynak: Open-Meteo Marine",
+    "sourceHybrid": "Kaynak: doğrudan seri + harmonik tamamlama",
+    "sourcePredicted": "Kaynak: harmonik tahmin (yedek)",
+    "timezoneLabel": "Saat dilimi: {tz}",
+    "beachCount": "{count} plaj",
+    "noneBeaches": "Yakında adlandırılmış plaj bulunamadı.",
+    "selectedLocation": "Seçili",
+    "myLocation": "Konumum",
+    "fallbackNotice": "Bu tarih için doğrudan seri olmadığından harmonik tahmin kullanılıyor.",
+    "tideHigh": "Yüksek",
+    "tideLow": "Düşük",
+    "windowHigh": "15g yüksek",
+    "windowLow": "15g düşük"
+  },
+  "seriesLabels": {
+    "tide": "Gelgit",
+    "wind": "Esinti"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "K",
+      "KD",
+      "D",
+      "GD",
+      "G",
+      "GB",
+      "B",
+      "KB"
+    ],
+    "full": [
+      "Kuzey",
+      "Kuzeydoğu",
+      "Doğu",
+      "Güneydoğu",
+      "Güney",
+      "Güneybatı",
+      "Batı",
+      "Kuzeybatı"
+    ]
+  },
+  "windStrengthLabels": [
+    "Sakin",
+    "Hafif",
+    "Meltem",
+    "Orta",
+    "Kuvvetli",
+    "Fırtınalı"
+  ]
+}

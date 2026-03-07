@@ -1,0 +1,80 @@
+{
+  "code": "pt-BR",
+  "label": "Português (Brasil)",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Marés em tempo real e previsão para qualquer litoral do mundo",
+    "languageLabel": "Idioma",
+    "mapSection": "Localização e praias",
+    "locateMe": "Usar minha localização",
+    "mapHint": "Toque no mapa para escolher qualquer litoral. As praias próximas aparecem abaixo.",
+    "nearbyBeaches": "Praias próximas",
+    "dateLabel": "Data",
+    "hourLabel": "Hora",
+    "prevDay": "Dia anterior",
+    "now": "Agora",
+    "nextDay": "Próximo dia",
+    "refresh": "Atualizar",
+    "currentLevel": "Horário selecionado",
+    "currentWind": "Rajada no horário",
+    "rangeSection": "Panorama de marés de 15 dias",
+    "dailyHigh": "Maré alta do dia",
+    "dailyLow": "Maré baixa do dia",
+    "disclaimer": "Apenas para referência de planejamento. Não use como única fonte para navegação ou decisões de segurança.",
+    "locating": "Detectando sua localização...",
+    "locationDenied": "Permissão de localização negada. Você ainda pode escolher no mapa.",
+    "locationError": "Falha ao obter localização. Escolha um ponto no mapa.",
+    "locationUnsupported": "Seu navegador não oferece suporte à geolocalização.",
+    "loading": "Carregando dados de maré...",
+    "fetchError": "Não foi possível carregar os dados para este ponto agora.",
+    "sourceObserved": "Fonte: Open-Meteo Marine",
+    "sourceHybrid": "Fonte: série direta + complemento harmônico",
+    "sourcePredicted": "Fonte: previsão harmônica (reserva)",
+    "timezoneLabel": "Fuso horário: {tz}",
+    "beachCount": "{count} praias",
+    "noneBeaches": "Nenhuma praia nomeada encontrada por perto.",
+    "selectedLocation": "Selecionado",
+    "myLocation": "Minha localização",
+    "fallbackNotice": "Usando previsão harmônica porque a série direta não está disponível para esta data.",
+    "tideHigh": "Alta",
+    "tideLow": "Baixa",
+    "windowHigh": "máx. 15 d",
+    "windowLow": "mín. 15 d"
+  },
+  "seriesLabels": {
+    "tide": "Maré",
+    "wind": "Rajada"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "Norte",
+      "Nordeste",
+      "Leste",
+      "Sudeste",
+      "Sul",
+      "Sudoeste",
+      "Oeste",
+      "Noroeste"
+    ]
+  },
+  "windStrengthLabels": [
+    "Calmo",
+    "Leve",
+    "Brisa",
+    "Moderado",
+    "Forte",
+    "Vendaval"
+  ]
+}

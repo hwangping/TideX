@@ -1,0 +1,80 @@
+{
+  "code": "ca",
+  "label": "Català",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Marees en temps real i previstes per a qualsevol costa del món",
+    "languageLabel": "Llengua",
+    "mapSection": "Ubicació i platges",
+    "locateMe": "Fes servir la meva ubicació",
+    "mapHint": "Toca el mapa per triar qualsevol costa. Les platges properes es mostren a sota.",
+    "nearbyBeaches": "Platges properes",
+    "dateLabel": "Data",
+    "hourLabel": "Hora",
+    "prevDay": "Dia anterior",
+    "now": "Ara",
+    "nextDay": "Dia següent",
+    "refresh": "Actualitza",
+    "currentLevel": "Hora seleccionada",
+    "currentWind": "Ratxa en aquest moment",
+    "rangeSection": "Visió de marees de 15 dies",
+    "dailyHigh": "Pleamar del dia",
+    "dailyLow": "Baixamar del dia",
+    "disclaimer": "Només com a referència de planificació. No l'utilitzis com a única font per a navegació o seguretat.",
+    "locating": "S'està detectant la teva ubicació...",
+    "locationDenied": "S'ha denegat l'accés a la ubicació. Encara pots triar al mapa.",
+    "locationError": "No s'ha pogut obtenir la ubicació. Tria un punt al mapa.",
+    "locationUnsupported": "El teu navegador no admet geolocalització.",
+    "loading": "S'estan carregant les dades de marea...",
+    "fetchError": "Ara mateix no es poden carregar les dades d'aquest punt.",
+    "sourceObserved": "Font: Open-Meteo Marine",
+    "sourceHybrid": "Font: sèrie directa + complement harmònic",
+    "sourcePredicted": "Font: predicció harmònica (reserva)",
+    "timezoneLabel": "Fus horari: {tz}",
+    "beachCount": "{count} platges",
+    "noneBeaches": "No s'han trobat platges amb nom a prop.",
+    "selectedLocation": "Seleccionat",
+    "myLocation": "La meva ubicació",
+    "fallbackNotice": "S'utilitza predicció harmònica perquè la sèrie directa no està disponible per a aquesta data.",
+    "tideHigh": "Pleamar",
+    "tideLow": "Baixamar",
+    "windowHigh": "màx. 15 d",
+    "windowLow": "mín. 15 d"
+  },
+  "seriesLabels": {
+    "tide": "Marea",
+    "wind": "Ratxa"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "Nord",
+      "Nord-est",
+      "Est",
+      "Sud-est",
+      "Sud",
+      "Sud-oest",
+      "Oest",
+      "Nord-oest"
+    ]
+  },
+  "windStrengthLabels": [
+    "Calma",
+    "Fluix",
+    "Brisa",
+    "Moderat",
+    "Fort",
+    "Tempestuós"
+  ]
+}

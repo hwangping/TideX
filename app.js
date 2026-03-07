@@ -1,19 +1,91 @@
 const { DateTime } = window.luxon;
 
 const LANGUAGE_OPTIONS = [
-  { code: "en", label: "English" },
+  { code: "en-US", label: "English (US)" },
   { code: "zh-CN", label: "简体中文" },
-  { code: "zh-TW", label: "繁體中文" },
-  { code: "ja", label: "日本語" },
-  { code: "ko", label: "한국어" },
-  { code: "fr", label: "Français" },
   { code: "es", label: "Español" },
+  { code: "ja", label: "日本語" },
   { code: "de", label: "Deutsch" },
+  { code: "fr", label: "Français" },
+  { code: "ko", label: "한국어" },
+  { code: "pt-BR", label: "Português (Brasil)" },
+  { code: "ru", label: "Русский" },
   { code: "it", label: "Italiano" },
+  { code: "zh-TW", label: "繁體中文" },
+  { code: "ar", label: "العربية" },
+  { code: "tr", label: "Türkçe" },
+  { code: "id", label: "Bahasa Indonesia" },
+  { code: "pl", label: "Polski" },
   { code: "vi", label: "Tiếng Việt" },
   { code: "th", label: "ไทย" },
+  { code: "nl", label: "Nederlands" },
+  { code: "sv", label: "Svenska" },
+  { code: "da", label: "Dansk" },
+  { code: "no", label: "Norsk" },
+  { code: "fi", label: "Suomi" },
+  { code: "he", label: "עברית" },
+  { code: "cs", label: "Čeština" },
+  { code: "ro", label: "Română" },
+  { code: "hu", label: "Magyar" },
+  { code: "el", label: "Ελληνικά" },
+  { code: "uk", label: "Українська" },
+  { code: "hi", label: "हिन्दी" },
   { code: "ms", label: "Bahasa Melayu" },
+  { code: "mi", label: "Te Reo Māori" },
+  { code: "ca", label: "Català" },
+  { code: "bn", label: "বাংলা" },
+  { code: "tl", label: "Tagalog" },
+  { code: "sw", label: "Kiswahili" },
+  { code: "ta", label: "தமிழ்" },
+  { code: "te", label: "తెలుగు" },
+  { code: "mr", label: "मराठी" },
+  { code: "ur", label: "اردو" },
+  { code: "bg", label: "Български" },
+  { code: "hr", label: "Hrvatski" },
+  { code: "sk", label: "Slovenčina" },
 ];
+
+const DEFAULT_LANG = "en-US";
+const LOCALE_VERSION = "20260307-i18n2";
+const RTL_LANGS = new Set(["ar", "he", "ur"]);
+const LANGUAGE_ALIASES = {
+  en: "en-US",
+  "en-us": "en-US",
+  zh: "zh-CN",
+  "zh-cn": "zh-CN",
+  "zh-hans": "zh-CN",
+  "zh-sg": "zh-CN",
+  "zh-tw": "zh-TW",
+  "zh-hk": "zh-TW",
+  "zh-hant": "zh-TW",
+  pt: "pt-BR",
+  "pt-br": "pt-BR",
+  in: "id",
+  id: "id",
+  nb: "no",
+  "nb-no": "no",
+  nn: "no",
+  "nn-no": "no",
+  no: "no",
+  iw: "he",
+  he: "he",
+  fil: "tl",
+  tl: "tl",
+};
+const INLINE_LOCALE_MAP = {
+  "en-US": "en",
+  "zh-CN": "zh-CN",
+  "zh-TW": "zh-TW",
+  es: "es",
+  ja: "ja",
+  de: "de",
+  fr: "fr",
+  ko: "ko",
+  it: "it",
+  vi: "vi",
+  th: "th",
+  ms: "ms",
+};
 
 const I18N = {
   en: {
@@ -31,6 +103,8 @@ const I18N = {
     nextDay: "Next day",
     refresh: "Refresh",
     currentLevel: "Selected time",
+    currentWind: "Gust at time",
+    rangeSection: "15-day tide outlook",
     dailyHigh: "Daily high tide",
     dailyLow: "Daily low tide",
     disclaimer: "For planning reference only. Do not use as a sole source for navigation or safety decisions.",
@@ -41,6 +115,7 @@ const I18N = {
     loading: "Loading tide data...",
     fetchError: "Unable to load data for this point right now.",
     sourceObserved: "Source: Open-Meteo Marine",
+    sourceHybrid: "Source: Direct tide + harmonic completion",
     sourcePredicted: "Source: Harmonic prediction (fallback)",
     timezoneLabel: "Timezone: {tz}",
     beachCount: "{count} beaches",
@@ -50,6 +125,8 @@ const I18N = {
     fallbackNotice: "Using harmonic prediction because direct series is unavailable for this date.",
     tideHigh: "High",
     tideLow: "Low",
+    windowHigh: "15d high",
+    windowLow: "15d low",
   },
   "zh-CN": {
     title: "TideX",
@@ -66,6 +143,8 @@ const I18N = {
     nextDay: "后一天",
     refresh: "刷新",
     currentLevel: "所选时刻",
+    currentWind: "所选阵风",
+    rangeSection: "前后15天潮汐总览",
     dailyHigh: "当日高潮",
     dailyLow: "当日低潮",
     disclaimer: "仅用于行程参考，不可作为航行或安全决策的唯一依据。",
@@ -76,6 +155,7 @@ const I18N = {
     loading: "正在加载潮汐数据...",
     fetchError: "当前无法加载该位置数据，请稍后重试。",
     sourceObserved: "数据源：Open-Meteo Marine",
+    sourceHybrid: "数据源：直接潮汐 + 谐波补全",
     sourcePredicted: "数据源：谐波预测（回退）",
     timezoneLabel: "时区：{tz}",
     beachCount: "{count} 个海滩",
@@ -85,6 +165,8 @@ const I18N = {
     fallbackNotice: "该日期暂无直接序列，已使用谐波模型预测。",
     tideHigh: "高潮",
     tideLow: "低潮",
+    windowHigh: "15天最高",
+    windowLow: "15天最低",
   },
   "zh-TW": {
     title: "TideX",
@@ -101,6 +183,8 @@ const I18N = {
     nextDay: "後一天",
     refresh: "重新整理",
     currentLevel: "所選時刻",
+    currentWind: "所選陣風",
+    rangeSection: "前後15天潮汐總覽",
     dailyHigh: "當日高潮",
     dailyLow: "當日低潮",
     disclaimer: "僅供行程參考，不可作為航行或安全決策之唯一依據。",
@@ -111,6 +195,7 @@ const I18N = {
     loading: "正在載入潮汐資料...",
     fetchError: "目前無法載入此位置資料，請稍後再試。",
     sourceObserved: "資料來源：Open-Meteo Marine",
+    sourceHybrid: "資料來源：直接潮汐 + 諧波補全",
     sourcePredicted: "資料來源：諧波預測（回退）",
     timezoneLabel: "時區：{tz}",
     beachCount: "{count} 個海灘",
@@ -120,6 +205,8 @@ const I18N = {
     fallbackNotice: "此日期暫無直接序列，已使用諧波模型預測。",
     tideHigh: "高潮",
     tideLow: "低潮",
+    windowHigh: "15天最高",
+    windowLow: "15天最低",
   },
   ja: {
     title: "TideX",
@@ -155,6 +242,8 @@ const I18N = {
     fallbackNotice: "この日付の直接系列がないため、調和予測を使用しています。",
     tideHigh: "満潮",
     tideLow: "干潮",
+    windowHigh: "15日最高",
+    windowLow: "15日最低",
   },
   ko: {
     title: "TideX",
@@ -190,6 +279,8 @@ const I18N = {
     fallbackNotice: "해당 날짜의 직접 시계열이 없어 조화 예측을 사용합니다.",
     tideHigh: "만조",
     tideLow: "간조",
+    windowHigh: "15일 최고",
+    windowLow: "15일 최저",
   },
   fr: {
     title: "TideX",
@@ -225,6 +316,8 @@ const I18N = {
     fallbackNotice: "Prévision harmonique utilisée car la série directe est indisponible pour cette date.",
     tideHigh: "Pleine",
     tideLow: "Basse",
+    windowHigh: "Max 15 j",
+    windowLow: "Min 15 j",
   },
   es: {
     title: "TideX",
@@ -260,6 +353,8 @@ const I18N = {
     fallbackNotice: "Se usa predicción armónica porque no hay serie directa para esta fecha.",
     tideHigh: "Pleamar",
     tideLow: "Bajamar",
+    windowHigh: "Máx 15 d",
+    windowLow: "Mín 15 d",
   },
   de: {
     title: "TideX",
@@ -295,6 +390,8 @@ const I18N = {
     fallbackNotice: "Harmonische Vorhersage, da direkte Reihe für dieses Datum fehlt.",
     tideHigh: "Hoch",
     tideLow: "Niedrig",
+    windowHigh: "15T Hoch",
+    windowLow: "15T Tief",
   },
   it: {
     title: "TideX",
@@ -330,6 +427,8 @@ const I18N = {
     fallbackNotice: "Usata previsione armonica perché la serie diretta non è disponibile per questa data.",
     tideHigh: "Alta",
     tideLow: "Bassa",
+    windowHigh: "Max 15 g",
+    windowLow: "Min 15 g",
   },
   vi: {
     title: "TideX",
@@ -365,6 +464,8 @@ const I18N = {
     fallbackNotice: "Đang dùng dự báo điều hòa vì không có chuỗi trực tiếp cho ngày này.",
     tideHigh: "Cao",
     tideLow: "Thấp",
+    windowHigh: "Đỉnh 15N",
+    windowLow: "Đáy 15N",
   },
   th: {
     title: "TideX",
@@ -400,6 +501,8 @@ const I18N = {
     fallbackNotice: "ใช้การพยากรณ์ฮาร์มอนิกเพราะไม่มีข้อมูลตรงสำหรับวันที่นี้",
     tideHigh: "น้ำขึ้น",
     tideLow: "น้ำลง",
+    windowHigh: "สูงสุด 15 วัน",
+    windowLow: "ต่ำสุด 15 วัน",
   },
   ms: {
     title: "TideX",
@@ -435,12 +538,18 @@ const I18N = {
     fallbackNotice: "Menggunakan ramalan harmonik kerana siri langsung tiada untuk tarikh ini.",
     tideHigh: "Pasang",
     tideLow: "Surut",
+    windowHigh: "Tinggi 15h",
+    windowLow: "Rendah 15h",
   },
 };
 
 const CONSTITUENT_PERIODS_HOURS = [12.4206, 12.0, 12.6583, 23.9345, 25.8193, 24.0659, 11.9672, 26.8684];
 const CONSTITUENT_OMEGAS = CONSTITUENT_PERIODS_HOURS.map((p) => (2 * Math.PI) / p);
 const DENSE_INTERVAL_MINUTES = 5;
+const MODEL_PAST_DAYS = 5;
+const MODEL_FUTURE_DAYS = 10;
+const MIN_MODEL_POINTS = 48;
+const WIND_MARKER_INTERVAL_HOURS = 6;
 
 const dom = {
   language: document.getElementById("language"),
@@ -460,6 +569,8 @@ const dom = {
   beachList: document.getElementById("beach-list"),
   currentLevel: document.getElementById("current-level"),
   currentLevelTime: document.getElementById("current-level-time"),
+  currentWind: document.getElementById("current-wind"),
+  currentWindTime: document.getElementById("current-wind-time"),
   dailyHigh: document.getElementById("daily-high"),
   dailyHighTime: document.getElementById("daily-high-time"),
   dailyLow: document.getElementById("daily-low"),
@@ -468,7 +579,7 @@ const dom = {
 };
 
 const state = {
-  lang: "en",
+  lang: DEFAULT_LANG,
   timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC",
   map: null,
   chart: null,
@@ -479,26 +590,166 @@ const state = {
   selectedDate: null,
   selectedHour: 12,
   sampledSeries: [],
+  windSeries: [],
+  windHourly: [],
+  referenceExtremes: null,
   source: "observed",
   beaches: [],
   requestId: 0,
+  localeBundle: null,
+  fallbackLocaleBundle: null,
+  localeCache: new Map(),
   modelCache: new Map(),
 };
 
+const SERIES_LABELS = {
+  tide: {
+    en: "Tide",
+    "zh-CN": "潮位",
+    "zh-TW": "潮位",
+  },
+  wind: {
+    en: "Gust",
+    "zh-CN": "阵风",
+    "zh-TW": "陣風",
+  },
+};
+
+const WIND_DIRECTION_LABELS = {
+  short: {
+    en: ["N", "NE", "E", "SE", "S", "SW", "W", "NW"],
+    "zh-CN": ["北", "东北", "东", "东南", "南", "西南", "西", "西北"],
+    "zh-TW": ["北", "東北", "東", "東南", "南", "西南", "西", "西北"],
+  },
+  full: {
+    en: ["North", "Northeast", "East", "Southeast", "South", "Southwest", "West", "Northwest"],
+    "zh-CN": ["北风", "东北风", "东风", "东南风", "南风", "西南风", "西风", "西北风"],
+    "zh-TW": ["北風", "東北風", "東風", "東南風", "南風", "西南風", "西風", "西北風"],
+  },
+};
+
+const WIND_STRENGTH_LABELS = {
+  en: ["Calm", "Light", "Breeze", "Moderate", "Strong", "Gale"],
+  "zh-CN": ["无风", "轻风", "和风", "中等", "较强", "大风"],
+  "zh-TW": ["無風", "輕風", "和風", "中等", "較強", "大風"],
+};
+
+function getInlineLocaleKey(code) {
+  return INLINE_LOCALE_MAP[code] || "en";
+}
+
+function getInlineSeriesLabel(kind, code = state.lang) {
+  const labels = SERIES_LABELS[kind] || {};
+  const inlineKey = getInlineLocaleKey(code);
+  return labels[inlineKey] || labels.en || kind;
+}
+
+function getInlineWindDirectionLabels(short = false, code = state.lang) {
+  const field = short ? "short" : "full";
+  const labelSet = WIND_DIRECTION_LABELS[field] || {};
+  const inlineKey = getInlineLocaleKey(code);
+  return labelSet[inlineKey] || labelSet.en || [];
+}
+
+function getInlineWindStrengthLabels(code = state.lang) {
+  const inlineKey = getInlineLocaleKey(code);
+  return WIND_STRENGTH_LABELS[inlineKey] || WIND_STRENGTH_LABELS.en || [];
+}
+
+function buildInlineLocaleBundle(code) {
+  const inlineKey = getInlineLocaleKey(code);
+  const option = LANGUAGE_OPTIONS.find((item) => item.code === code);
+  return {
+    code,
+    label: option?.label || code,
+    dir: RTL_LANGS.has(code) ? "rtl" : "ltr",
+    template: !INLINE_LOCALE_MAP[code],
+    messages: {
+      ...I18N.en,
+      ...(I18N[inlineKey] || {}),
+    },
+    seriesLabels: {
+      tide: getInlineSeriesLabel("tide", code),
+      wind: getInlineSeriesLabel("wind", code),
+    },
+    windDirectionLabels: {
+      short: getInlineWindDirectionLabels(true, code),
+      full: getInlineWindDirectionLabels(false, code),
+    },
+    windStrengthLabels: getInlineWindStrengthLabels(code),
+  };
+}
+
+async function fetchLocaleBundle(code) {
+  const response = await fetch(`./locales/${encodeURIComponent(code)}.json?v=${LOCALE_VERSION}`, {
+    cache: "no-store",
+  });
+  if (!response.ok) {
+    throw new Error(`locale-${response.status}`);
+  }
+  return response.json();
+}
+
+async function ensureLocaleBundle(code) {
+  if (state.localeCache.has(code)) {
+    return state.localeCache.get(code);
+  }
+
+  let bundle;
+  try {
+    bundle = await fetchLocaleBundle(code);
+  } catch {
+    bundle = buildInlineLocaleBundle(code);
+  }
+
+  state.localeCache.set(code, bundle);
+  return bundle;
+}
+
+function applyDocumentLocale() {
+  const dir = state.localeBundle?.dir || (RTL_LANGS.has(state.lang) ? "rtl" : "ltr");
+  document.documentElement.lang = state.lang;
+  document.documentElement.dir = dir;
+}
+
+async function setLanguage(langCode, rerender = true) {
+  const normalized = normalizeLanguage(langCode);
+  const fallback = await ensureLocaleBundle(DEFAULT_LANG);
+  const locale = normalized === DEFAULT_LANG ? fallback : await ensureLocaleBundle(normalized);
+
+  state.lang = normalized;
+  state.fallbackLocaleBundle = fallback;
+  state.localeBundle = locale || fallback;
+
+  if (dom.language) {
+    dom.language.value = normalized;
+  }
+
+  applyDocumentLocale();
+
+  if (rerender) {
+    applyStaticI18n();
+  }
+}
+
 function normalizeLanguage(lang) {
-  if (!lang) return "en";
+  if (!lang) return DEFAULT_LANG;
   const lower = lang.toLowerCase();
-  if (lower.startsWith("zh-tw") || lower.includes("hant")) return "zh-TW";
-  if (lower.startsWith("zh")) return "zh-CN";
+  if (LANGUAGE_ALIASES[lower]) return LANGUAGE_ALIASES[lower];
   const exact = LANGUAGE_OPTIONS.find((item) => item.code.toLowerCase() === lower);
   if (exact) return exact.code;
-  const partial = LANGUAGE_OPTIONS.find((item) => lower.startsWith(item.code.toLowerCase()));
-  return partial ? partial.code : "en";
+  const base = lower.split("-")[0];
+  if (LANGUAGE_ALIASES[base]) return LANGUAGE_ALIASES[base];
+  const partial = LANGUAGE_OPTIONS.find(
+    (item) => item.code.toLowerCase() === base || item.code.toLowerCase().startsWith(`${base}-`)
+  );
+  return partial ? partial.code : DEFAULT_LANG;
 }
 
 function t(key, vars = {}) {
-  const langPack = I18N[state.lang] || I18N.en;
-  let text = langPack[key] ?? I18N.en[key] ?? key;
+  const localeMessages = state.localeBundle?.messages || {};
+  const fallbackMessages = state.fallbackLocaleBundle?.messages || I18N.en;
+  let text = localeMessages[key] ?? fallbackMessages[key] ?? I18N.en[key] ?? key;
   Object.entries(vars).forEach(([name, value]) => {
     text = text.replaceAll(`{${name}}`, String(value));
   });
@@ -555,7 +806,12 @@ function updateLocationPill() {
 }
 
 function updateSourceAndTimezone() {
-  dom.sourcePill.textContent = state.source === "predicted" ? t("sourcePredicted") : t("sourceObserved");
+  dom.sourcePill.textContent =
+    state.source === "predicted"
+      ? t("sourcePredicted")
+      : state.source === "hybrid"
+        ? t("sourceHybrid")
+        : t("sourceObserved");
   dom.timezonePill.textContent = t("timezoneLabel", { tz: state.timezone });
 }
 
@@ -608,9 +864,8 @@ function initChart() {
 }
 
 function bindEvents() {
-  dom.language.addEventListener("change", () => {
-    state.lang = dom.language.value;
-    applyStaticI18n();
+  dom.language.addEventListener("change", async () => {
+    await setLanguage(dom.language.value);
   });
 
   dom.dateInput.addEventListener("change", () => {
@@ -650,6 +905,64 @@ function toLocalDateString(ms) {
 function formatHeight(value) {
   if (!Number.isFinite(value)) return "--";
   return `${value.toFixed(2)} m`;
+}
+
+function formatWindSpeed(value) {
+  if (!Number.isFinite(value)) return "--";
+  return `${value.toFixed(1)} m/s`;
+}
+
+function formatWindDirection(degrees, short = false) {
+  if (!Number.isFinite(degrees)) return "--";
+  const normalized = ((degrees % 360) + 360) % 360;
+  const field = short ? "short" : "full";
+  const labels =
+    state.localeBundle?.windDirectionLabels?.[field] ||
+    state.fallbackLocaleBundle?.windDirectionLabels?.[field] ||
+    getInlineWindDirectionLabels(short);
+  return labels[Math.round(normalized / 45) % labels.length];
+}
+
+function formatWindDirectionArrow(degrees) {
+  if (!Number.isFinite(degrees)) return "·";
+  const normalized = (((degrees + 180) % 360) + 360) % 360;
+  const arrows = ["↑", "↗", "→", "↘", "↓", "↙", "←", "↖"];
+  return arrows[Math.round(normalized / 45) % arrows.length];
+}
+
+function getWindStrengthLabel(value) {
+  if (!Number.isFinite(value)) return "--";
+  const labels =
+    state.localeBundle?.windStrengthLabels ||
+    state.fallbackLocaleBundle?.windStrengthLabels ||
+    getInlineWindStrengthLabels();
+  if (value < 0.3) return labels[0];
+  if (value < 3.4) return labels[1];
+  if (value < 5.5) return labels[2];
+  if (value < 8.0) return labels[3];
+  if (value < 13.9) return labels[4];
+  return labels[5];
+}
+
+function formatWind(value, direction) {
+  if (!Number.isFinite(value)) return "--";
+  const directionLabel = formatWindDirection(direction);
+  const strengthLabel = getWindStrengthLabel(value);
+  return Number.isFinite(direction)
+    ? `${formatWindSpeed(value)} · ${directionLabel} · ${strengthLabel}`
+    : `${formatWindSpeed(value)} · ${strengthLabel}`;
+}
+
+function getSeriesLabel(kind) {
+  return (
+    state.localeBundle?.seriesLabels?.[kind] ||
+    state.fallbackLocaleBundle?.seriesLabels?.[kind] ||
+    getInlineSeriesLabel(kind)
+  );
+}
+
+function formatSummaryDate(dateStr) {
+  return DateTime.fromISO(dateStr, { zone: state.timezone }).setLocale(state.lang).toFormat("LL/dd");
 }
 
 function haversineKm(lat1, lon1, lat2, lon2) {
@@ -897,6 +1210,29 @@ function parseHourlySeries(payload) {
   return series.sort((a, b) => a.time - b.time);
 }
 
+function parseWindSeries(payload) {
+  const rawTimes = payload?.hourly?.time || [];
+  const rawSpeeds = payload?.hourly?.wind_gusts_10m || [];
+  const rawDirections = payload?.hourly?.wind_direction_10m || [];
+
+  const series = [];
+  for (let i = 0; i < rawTimes.length; i += 1) {
+    if (rawSpeeds[i] === null || rawSpeeds[i] === undefined) continue;
+    const t = Number(rawTimes[i]);
+    const speed = Number(rawSpeeds[i]);
+    const direction =
+      rawDirections[i] === null || rawDirections[i] === undefined ? NaN : Number(rawDirections[i]);
+    if (!Number.isFinite(t) || !Number.isFinite(speed)) continue;
+    series.push({
+      time: t * 1000,
+      value: speed,
+      direction,
+    });
+  }
+
+  return series.sort((a, b) => a.time - b.time);
+}
+
 async function fetchMarineSeries(lat, lng, startDate, endDate, model) {
   const url = new URL("https://marine-api.open-meteo.com/v1/marine");
   url.searchParams.set("latitude", String(lat));
@@ -920,6 +1256,38 @@ async function fetchMarineSeries(lat, lng, startDate, endDate, model) {
   return {
     timezone: data.timezone || "UTC",
     series: parseHourlySeries(data),
+  };
+}
+
+async function fetchWindSeries(lat, lng, startDate, endDate) {
+  const url = new URL("https://api.open-meteo.com/v1/forecast");
+  url.searchParams.set("latitude", String(lat));
+  url.searchParams.set("longitude", String(lng));
+  url.searchParams.set("hourly", "wind_gusts_10m,wind_direction_10m");
+  url.searchParams.set("timezone", "auto");
+  url.searchParams.set("timeformat", "unixtime");
+  url.searchParams.set("wind_speed_unit", "ms");
+  url.searchParams.set("start_date", startDate);
+  url.searchParams.set("end_date", endDate);
+
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`wind-${response.status}`);
+  }
+
+  const data = await response.json();
+  return {
+    timezone: data.timezone || "UTC",
+    series: parseWindSeries(data),
+  };
+}
+
+function getDayBounds(dateStr, timezone) {
+  const start = DateTime.fromISO(dateStr, { zone: timezone }).startOf("day");
+  return {
+    start,
+    end: start.plus({ hours: 24 }),
+    lastHour: start.plus({ hours: 23 }),
   };
 }
 
@@ -1023,8 +1391,7 @@ function createMonotoneInterpolator(hourlySeries) {
 }
 
 function buildDenseSeries(hourlySeries, dateStr, timezone) {
-  const start = DateTime.fromISO(dateStr, { zone: timezone }).startOf("day");
-  const end = start.plus({ hours: 24 });
+  const { start, end } = getDayBounds(dateStr, timezone);
   const dense = [];
   const interpolator = createMonotoneInterpolator(hourlySeries);
 
@@ -1034,6 +1401,105 @@ function buildDenseSeries(hourlySeries, dateStr, timezone) {
   }
 
   return dense;
+}
+
+function buildDenseWindSeries(hourlySeries, dateStr, timezone) {
+  const { start, end } = getDayBounds(dateStr, timezone);
+  const dense = [];
+  const interpolator = createMonotoneInterpolator(hourlySeries);
+  const firstTime = hourlySeries[0]?.time;
+  const lastTime = hourlySeries[hourlySeries.length - 1]?.time;
+
+  for (let time = start; time <= end; time = time.plus({ minutes: DENSE_INTERVAL_MINUTES })) {
+    const ms = time.toMillis();
+    dense.push({
+      time: ms,
+      value: ms >= firstTime && ms <= lastTime ? interpolator(ms) : null,
+    });
+  }
+
+  return dense;
+}
+
+function coversFullDay(hourlySeries, dateStr, timezone) {
+  if (!hourlySeries || hourlySeries.length < 20) return false;
+  const { start, lastHour } = getDayBounds(dateStr, timezone);
+  const startMs = start.toMillis();
+  const lastHourMs = lastHour.toMillis();
+  return (
+    hourlySeries[0].time <= startMs + 30 * 60 * 1000 &&
+    hourlySeries[hourlySeries.length - 1].time >= lastHourMs - 30 * 60 * 1000
+  );
+}
+
+function mergeTideSeriesWithPrediction(hourlySeries, predictedSeries) {
+  const interpolator = createMonotoneInterpolator(hourlySeries);
+  const firstTime = hourlySeries[0]?.time ?? -Infinity;
+  const lastTime = hourlySeries[hourlySeries.length - 1]?.time ?? -Infinity;
+
+  return predictedSeries.map((point) => ({
+    time: point.time,
+    value:
+      point.time >= firstTime && point.time <= lastTime ? interpolator(point.time) : point.value,
+  }));
+}
+
+function findNearestSample(series, targetMs) {
+  if (!series || series.length === 0) return null;
+  let left = 0;
+  let right = series.length - 1;
+  while (left + 1 < right) {
+    const mid = Math.floor((left + right) / 2);
+    if (series[mid].time <= targetMs) {
+      left = mid;
+    } else {
+      right = mid;
+    }
+  }
+
+  const leftItem = series[left];
+  const rightItem = series[right];
+  return Math.abs(leftItem.time - targetMs) <= Math.abs(rightItem.time - targetMs) ? leftItem : rightItem;
+}
+
+function buildWindArrowData(hourlySeries) {
+  return hourlySeries
+    .filter((_, index) => index % WIND_MARKER_INTERVAL_HOURS === 0)
+    .filter((point) => Number.isFinite(point.value) && Number.isFinite(point.direction))
+    .map((point) => ({
+      value: [point.time, point.value],
+      directionArrow: formatWindDirectionArrow(point.direction),
+      directionLabel: formatWindDirection(point.direction, true),
+    }));
+}
+
+function getSeriesForDateFromWindow(series, dateStr, timezone) {
+  if (!Array.isArray(series) || series.length === 0) return [];
+  const { start, end } = getDayBounds(dateStr, timezone);
+  const startMs = start.toMillis();
+  const endMs = end.toMillis();
+  return series.filter((point) => point.time >= startMs && point.time <= endMs);
+}
+
+async function fetchReferenceWindowSeries(lat, lng, startDate, endDate) {
+  const candidates = ["best_match", null];
+  let bestResult = null;
+
+  for (const model of candidates) {
+    try {
+      const result = await fetchMarineSeries(lat, lng, startDate, endDate, model);
+      if (!bestResult || result.series.length > bestResult.series.length) {
+        bestResult = result;
+      }
+      if (result.series.length >= 24) {
+        return result;
+      }
+    } catch {
+      // try next model candidate
+    }
+  }
+
+  return bestResult;
 }
 
 function solveLinearSystem(matrix, vector) {
@@ -1133,8 +1599,7 @@ function predictHarmonicValue(model, timeMs) {
 }
 
 function buildPredictedDaySeries(model, dateStr, timezone) {
-  const start = DateTime.fromISO(dateStr, { zone: timezone }).startOf("day");
-  const end = start.plus({ hours: 24 });
+  const { start, end } = getDayBounds(dateStr, timezone);
   const result = [];
 
   for (let cursor = start; cursor <= end; cursor = cursor.plus({ minutes: DENSE_INTERVAL_MINUTES })) {
@@ -1149,64 +1614,84 @@ function buildPredictedDaySeries(model, dateStr, timezone) {
 }
 
 async function getHarmonicModel(lat, lng) {
-  const key = `${lat.toFixed(2)},${lng.toFixed(2)}`;
+  const key = `${lat.toFixed(2)},${lng.toFixed(2)},${DateTime.now().setZone(state.timezone).toISODate()}`;
   if (state.modelCache.has(key)) {
     return state.modelCache.get(key);
   }
 
-  const endDate = DateTime.now().minus({ days: 6 }).toISODate();
-  const startDate = DateTime.now().minus({ days: 96 }).toISODate();
+  const anchor = DateTime.now().setZone(state.timezone).startOf("day");
+  const candidates = [
+    { past: MODEL_PAST_DAYS, future: MODEL_FUTURE_DAYS, model: "best_match" },
+    { past: 4, future: 9, model: "best_match" },
+    { past: 3, future: 8, model: "best_match" },
+    { past: 2, future: 7, model: "best_match" },
+    { past: MODEL_PAST_DAYS, future: MODEL_FUTURE_DAYS, model: null },
+  ];
 
-  let modelInput = [];
-  let timezone = "UTC";
+  let bestSeries = [];
+  let bestTimezone = "UTC";
 
-  try {
-    const data = await fetchMarineSeries(lat, lng, startDate, endDate, "era5_ocean");
-    timezone = data.timezone || "UTC";
-    modelInput = data.series;
-  } catch {
-    const fallbackData = await fetchMarineSeries(
-      lat,
-      lng,
-      DateTime.now().minus({ days: 30 }).toISODate(),
-      DateTime.now().toISODate(),
-      "best_match"
-    );
-    timezone = fallbackData.timezone || "UTC";
-    modelInput = fallbackData.series;
+  for (const candidate of candidates) {
+    const startDate = anchor.minus({ days: candidate.past }).toISODate();
+    const endDate = anchor.plus({ days: candidate.future }).toISODate();
+
+    try {
+      const data = await fetchMarineSeries(lat, lng, startDate, endDate, candidate.model);
+      if (data.series.length > bestSeries.length) {
+        bestSeries = data.series;
+        bestTimezone = data.timezone || "UTC";
+      }
+
+      if (data.series.length >= MIN_MODEL_POINTS) {
+        const model = fitHarmonicModel(data.series);
+        model.timezone = data.timezone || "UTC";
+        state.modelCache.set(key, model);
+        return model;
+      }
+    } catch {
+      // keep trying candidate windows
+    }
   }
 
-  if (modelInput.length < 72) {
-    throw new Error("insufficient-history");
+  if (bestSeries.length >= 24) {
+    const model = fitHarmonicModel(bestSeries);
+    model.timezone = bestTimezone;
+    state.modelCache.set(key, model);
+    return model;
   }
 
-  const model = fitHarmonicModel(modelInput);
-  model.timezone = timezone;
-
-  state.modelCache.set(key, model);
-  return model;
+  throw new Error("insufficient-history");
 }
 
 async function resolveSeriesForDate(lat, lng, dateStr) {
-  const selectedDay = DateTime.fromISO(dateStr, { zone: state.timezone }).startOf("day");
-  const dayDelta = Math.round(
-    selectedDay.diff(DateTime.now().setZone(state.timezone).startOf("day"), "days").days
-  );
+  const directCandidates = ["best_match", null];
 
-  const model = dayDelta < -5 ? "era5_ocean" : "best_match";
+  for (const model of directCandidates) {
+    try {
+      const direct = await fetchMarineSeries(lat, lng, dateStr, dateStr, model);
+      if (direct.series.length >= 12) {
+        if (coversFullDay(direct.series, dateStr, direct.timezone)) {
+          return {
+            source: "observed",
+            timezone: direct.timezone,
+            series: buildDenseSeries(direct.series, dateStr, direct.timezone),
+            note: "",
+          };
+        }
 
-  try {
-    const direct = await fetchMarineSeries(lat, lng, dateStr, dateStr, model);
-    if (direct.series.length >= 12) {
-      return {
-        source: "observed",
-        timezone: direct.timezone,
-        series: buildDenseSeries(direct.series, dateStr, direct.timezone),
-        note: "",
-      };
+        const harmonicModel = await getHarmonicModel(lat, lng);
+        const timezone = direct.timezone || harmonicModel.timezone || state.timezone;
+        const predictedSeries = buildPredictedDaySeries(harmonicModel, dateStr, timezone);
+        return {
+          source: "hybrid",
+          timezone,
+          series: mergeTideSeriesWithPrediction(direct.series, predictedSeries),
+          note: "",
+        };
+      }
+    } catch {
+      // try next direct model candidate
     }
-  } catch {
-    // fallback handled below
   }
 
   const harmonicModel = await getHarmonicModel(lat, lng);
@@ -1217,6 +1702,15 @@ async function resolveSeriesForDate(lat, lng, dateStr) {
     timezone,
     series: buildPredictedDaySeries(harmonicModel, dateStr, timezone),
     note: t("fallbackNotice"),
+  };
+}
+
+async function resolveWindSeries(lat, lng, dateStr) {
+  const wind = await fetchWindSeries(lat, lng, dateStr, dateStr);
+  return {
+    timezone: wind.timezone,
+    series: buildDenseWindSeries(wind.series, dateStr, wind.timezone),
+    hourly: wind.series,
   };
 }
 
@@ -1287,107 +1781,373 @@ function detectExtrema(series) {
   };
 }
 
+function summarizeDailyExtrema(series) {
+  const extrema = detectExtrema(series);
+  const highSeries = extrema.highs.length > 0 ? extrema.highs : series;
+  const lowSeries = extrema.lows.length > 0 ? extrema.lows : series;
+  const high = highSeries.reduce((acc, item) => (item.value > acc.value ? item : acc), highSeries[0]);
+  const low = lowSeries.reduce((acc, item) => (item.value < acc.value ? item : acc), lowSeries[0]);
+  return { high, low };
+}
+
+async function resolveReferenceExtremes(lat, lng, timezone) {
+  const harmonicModel = await getHarmonicModel(lat, lng);
+  const zone = timezone || harmonicModel.timezone || state.timezone;
+  const anchor = DateTime.now().setZone(zone).startOf("day");
+  const startDate = anchor.minus({ days: MODEL_PAST_DAYS }).toISODate();
+  const endDate = anchor.plus({ days: MODEL_FUTURE_DAYS }).toISODate();
+  const directWindow = await fetchReferenceWindowSeries(lat, lng, startDate, endDate);
+  const directSeries = directWindow?.series || [];
+  let highest = null;
+  let lowest = null;
+
+  for (let offset = -MODEL_PAST_DAYS; offset <= MODEL_FUTURE_DAYS; offset += 1) {
+    const date = anchor.plus({ days: offset }).toISODate();
+    const predictedDaySeries = buildPredictedDaySeries(harmonicModel, date, zone);
+    const directDaySeries = getSeriesForDateFromWindow(directSeries, date, zone);
+    const daySeries =
+      directDaySeries.length >= 12
+        ? coversFullDay(directDaySeries, date, zone)
+          ? buildDenseSeries(directDaySeries, date, zone)
+          : mergeTideSeriesWithPrediction(directDaySeries, predictedDaySeries)
+        : predictedDaySeries;
+    const { high, low } = summarizeDailyExtrema(daySeries);
+    if (!highest || high.value > highest.value) {
+      highest = { ...high, date };
+    }
+    if (!lowest || low.value < lowest.value) {
+      lowest = { ...low, date };
+    }
+  }
+
+  return {
+    high: highest,
+    low: lowest,
+  };
+}
+
+function buildReferenceLine(point, color, position) {
+  if (!point || !Number.isFinite(point.value)) return null;
+  return {
+    yAxis: point.value,
+    lineStyle: {
+      color,
+      type: "solid",
+      width: 1.1,
+      opacity: 0.85,
+    },
+    label: {
+      show: true,
+      formatter: formatSummaryDate(point.date),
+      position,
+      color,
+      fontSize: 10,
+      fontWeight: 700,
+      backgroundColor: "rgba(255, 255, 255, 0.88)",
+      borderRadius: 999,
+      padding: [2, 7],
+    },
+  };
+}
+
 function renderChart() {
-  if (!state.chart || !state.sampledSeries || state.sampledSeries.length === 0) return;
+  if (!state.chart) return;
+  if (!state.sampledSeries || state.sampledSeries.length === 0) {
+    state.chart.clear();
+    return;
+  }
 
   const extrema = detectExtrema(state.sampledSeries);
   const selectedMs = DateTime.fromISO(
     `${state.selectedDate}T${String(state.selectedHour).padStart(2, "0")}:00`,
     { zone: state.timezone }
   ).toMillis();
+  const tideLabel = getSeriesLabel("tide");
+  const windLabel = getSeriesLabel("wind");
+  const windColor = "#f97316";
+  const hasWind = state.windSeries.some((point) => Number.isFinite(point.value));
+  const tideValues = state.sampledSeries
+    .map((point) => point.value)
+    .filter((value) => Number.isFinite(value));
+  const referenceValues = [state.referenceExtremes?.high?.value, state.referenceExtremes?.low?.value].filter(
+    (value) => Number.isFinite(value)
+  );
+  const tideExtentValues = tideValues.concat(referenceValues);
+  const tideMin = tideExtentValues.length > 0 ? Math.min(...tideExtentValues) : -1;
+  const tideMax = tideExtentValues.length > 0 ? Math.max(...tideExtentValues) : 1;
+  const tidePadding = Math.max((tideMax - tideMin) * 0.12, 0.25);
+  const tideReferenceLines = [
+    {
+      xAxis: selectedMs,
+      lineStyle: {
+        color: "rgba(249, 115, 22, 0.72)",
+        type: "dashed",
+        width: 1.2,
+      },
+      label: {
+        show: true,
+        formatter: `${String(state.selectedHour).padStart(2, "0")}:00`,
+        color: "#9a4c1c",
+      },
+    },
+  ];
+  const highReferenceLine = buildReferenceLine(
+    state.referenceExtremes?.high,
+    "#b45309",
+    "insideEndTop"
+  );
+  const lowReferenceLine = buildReferenceLine(
+    state.referenceExtremes?.low,
+    "#0f766e",
+    "insideEndBottom"
+  );
+  if (highReferenceLine) tideReferenceLines.push(highReferenceLine);
+  if (lowReferenceLine) tideReferenceLines.push(lowReferenceLine);
 
   const markData = extrema.highs.map((point) => ({
-      timeLabel: DateTime.fromMillis(point.time).setZone(state.timezone).toFormat("HH:mm"),
-      coord: [point.time, point.value],
-      value: point.value,
-      itemStyle: { color: "#0ea5e9" },
-      symbolSize: 9,
-    }));
+    timeLabel: DateTime.fromMillis(point.time).setZone(state.timezone).toFormat("HH:mm"),
+    coord: [point.time, point.value],
+    value: point.value,
+    itemStyle: { color: "#0ea5e9" },
+    symbolSize: 9,
+  }));
 
-  const primaryColor = state.source === "predicted" ? "#0f9cd4" : "#0b7fc4";
+  const primaryColor =
+    state.source === "predicted" ? "#0f9cd4" : state.source === "hybrid" ? "#0991ca" : "#0b7fc4";
+  const chartSeries = [
+    {
+      name: tideLabel,
+      type: "line",
+      xAxisIndex: 0,
+      yAxisIndex: 0,
+      showSymbol: false,
+      smooth: true,
+      z: 3,
+      lineStyle: {
+        width: 2.8,
+        color: primaryColor,
+      },
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: "rgba(14, 166, 215, 0.36)" },
+          { offset: 1, color: "rgba(14, 166, 215, 0.05)" },
+        ]),
+      },
+      data: state.sampledSeries.map((item) => [item.time, item.value]),
+      markPoint: {
+        label: {
+          formatter: (param) => `${param.data.timeLabel}`,
+          color: "#0f3550",
+          fontWeight: 600,
+          fontSize: 10,
+        },
+        data: markData,
+      },
+      markLine: {
+        symbol: ["none", "none"],
+        silent: true,
+        data: tideReferenceLines,
+      },
+    },
+  ];
+
+  if (hasWind) {
+    chartSeries.push({
+      name: windLabel,
+      type: "line",
+      xAxisIndex: 1,
+      yAxisIndex: 1,
+      showSymbol: false,
+      smooth: true,
+      connectNulls: false,
+      z: 2,
+      lineStyle: {
+        width: 2,
+        color: windColor,
+      },
+      areaStyle: {
+        color: "rgba(249, 115, 22, 0.08)",
+      },
+      data: state.windSeries.map((item) => [item.time, item.value]),
+      markLine: {
+        symbol: ["none", "none"],
+        silent: true,
+        lineStyle: {
+          color: "rgba(249, 115, 22, 0.35)",
+          type: "dashed",
+          width: 1,
+        },
+        label: { show: false },
+        data: [{ xAxis: selectedMs }],
+      },
+    });
+    chartSeries.push({
+      name: windLabel,
+      type: "scatter",
+      xAxisIndex: 1,
+      yAxisIndex: 1,
+      symbol: "circle",
+      symbolSize: 4,
+      silent: true,
+      tooltip: { show: false },
+      itemStyle: {
+        color: "rgba(249, 115, 22, 0.18)",
+      },
+      label: {
+        show: true,
+        formatter: (param) => `${param.data.directionArrow} ${param.data.directionLabel}`,
+        position: "top",
+        distance: 6,
+        color: "#b45309",
+        fontSize: 11,
+        fontWeight: 600,
+      },
+      data: buildWindArrowData(state.windHourly),
+    });
+  }
 
   state.chart.setOption(
     {
-      grid: {
-        top: 28,
-        right: 18,
-        left: 52,
-        bottom: 52,
+      axisPointer: {
+        link: [{ xAxisIndex: hasWind ? [0, 1] : [0] }],
       },
+      grid: hasWind
+        ? [
+            {
+              top: 24,
+              left: 52,
+              right: 18,
+              height: "55%",
+            },
+            {
+              left: 52,
+              right: 18,
+              top: "72%",
+              height: "17%",
+            },
+          ]
+        : [
+            {
+              top: 28,
+              left: 52,
+              right: 18,
+              bottom: 52,
+            },
+          ],
       tooltip: {
         trigger: "axis",
         axisPointer: {
           type: "line",
           lineStyle: { color: "rgba(11, 127, 196, 0.35)", width: 1.2 },
         },
-        valueFormatter: (value) => `${Number(value).toFixed(2)} m`,
         formatter: (params) => {
-          const point = params?.[0];
-          if (!point) return "";
-          const dt = DateTime.fromMillis(point.value[0]).setZone(state.timezone).toFormat("yyyy-LL-dd HH:mm");
-          return `${dt}<br/>${point.marker}${point.seriesName}: ${Number(point.value[1]).toFixed(2)} m`;
+          const items = (Array.isArray(params) ? params : [params]).filter((item) => item.seriesType !== "scatter");
+          if (items.length === 0) return "";
+          const timestamp = items[0].value[0];
+          const tideItem = items.find((item) => item.seriesName === tideLabel);
+          const windItem = items.find((item) => item.seriesName === windLabel);
+          const dt = DateTime.fromMillis(timestamp).setZone(state.timezone).toFormat("yyyy-LL-dd HH:mm");
+          const lines = [dt];
+
+          if (tideItem) {
+            lines.push(`${tideItem.marker}${tideLabel}: ${Number(tideItem.value[1]).toFixed(2)} m`);
+          }
+
+          if (windItem && windItem.value[1] !== null && Number.isFinite(Number(windItem.value[1]))) {
+            const windSample = findNearestSample(state.windHourly, timestamp);
+            lines.push(`${windItem.marker}${windLabel}: ${formatWind(Number(windItem.value[1]), windSample?.direction)}`);
+          }
+
+          return lines.join("<br/>");
         },
       },
-      xAxis: {
-        type: "time",
-        axisLabel: {
-          color: "#4a6a82",
-          formatter: (value) => DateTime.fromMillis(value).setZone(state.timezone).toFormat("HH:mm"),
-        },
-        axisLine: { lineStyle: { color: "rgba(40, 89, 122, 0.28)" } },
-        splitLine: { show: false },
-      },
-      yAxis: {
-        type: "value",
-        axisLabel: {
-          color: "#4a6a82",
-          formatter: (value) => `${Number(value).toFixed(1)}m`,
-        },
-        splitLine: {
-          lineStyle: { color: "rgba(40, 89, 122, 0.12)", type: "dashed" },
-        },
-      },
-      series: [
-        {
-          name: "Sea level",
-          type: "line",
-          showSymbol: false,
-          smooth: true,
-          lineStyle: {
-            width: 2.8,
-            color: primaryColor,
-          },
-          areaStyle: {
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: "rgba(14, 166, 215, 0.36)" },
-              { offset: 1, color: "rgba(14, 166, 215, 0.05)" },
-            ]),
-          },
-          data: state.sampledSeries.map((item) => [item.time, item.value]),
-          markPoint: {
-            label: {
-              formatter: (param) => `${param.data.timeLabel}`,
-              color: "#0f3550",
-              fontWeight: 600,
-              fontSize: 10,
+      xAxis: hasWind
+        ? [
+            {
+              type: "time",
+              gridIndex: 0,
+              axisLabel: { show: false },
+              axisTick: { show: false },
+              axisLine: { show: false },
+              splitLine: { show: false },
             },
-            data: markData,
-          },
-          markLine: {
-            symbol: ["none", "none"],
-            lineStyle: {
-              color: "rgba(249, 115, 22, 0.72)",
-              type: "dashed",
-              width: 1.2,
+            {
+              type: "time",
+              gridIndex: 1,
+              axisLabel: {
+                color: "#4a6a82",
+                formatter: (value) => DateTime.fromMillis(value).setZone(state.timezone).toFormat("HH:mm"),
+              },
+              axisLine: { lineStyle: { color: "rgba(40, 89, 122, 0.28)" } },
+              splitLine: { show: false },
             },
-            label: {
-              formatter: `${String(state.selectedHour).padStart(2, "0")}:00`,
-              color: "#9a4c1c",
+          ]
+        : [
+            {
+              type: "time",
+              gridIndex: 0,
+              axisLabel: {
+                color: "#4a6a82",
+                formatter: (value) => DateTime.fromMillis(value).setZone(state.timezone).toFormat("HH:mm"),
+              },
+              axisLine: { lineStyle: { color: "rgba(40, 89, 122, 0.28)" } },
+              splitLine: { show: false },
             },
-            data: [{ xAxis: selectedMs }],
-          },
-        },
-      ],
+          ],
+      yAxis: hasWind
+        ? [
+            {
+              type: "value",
+              gridIndex: 0,
+              min: tideMin - tidePadding,
+              max: tideMax + tidePadding,
+              axisLabel: {
+                color: "#4a6a82",
+                formatter: (value) => `${Number(value).toFixed(1)}m`,
+              },
+              splitLine: {
+                lineStyle: { color: "rgba(40, 89, 122, 0.12)", type: "dashed" },
+              },
+            },
+            {
+              type: "value",
+              gridIndex: 1,
+              min: 0,
+              splitNumber: 3,
+              name: "m/s",
+              nameLocation: "end",
+              nameGap: 10,
+              nameTextStyle: {
+                color: "#b45309",
+                fontSize: 10,
+                fontWeight: 600,
+              },
+              axisLabel: {
+                color: "#b45309",
+                formatter: (value) => `${Number(value).toFixed(0)}`,
+              },
+              splitLine: { show: false },
+              axisLine: {
+                lineStyle: { color: "rgba(249, 115, 22, 0.45)" },
+              },
+            },
+          ]
+        : [
+            {
+              type: "value",
+              gridIndex: 0,
+              min: tideMin - tidePadding,
+              max: tideMax + tidePadding,
+              axisLabel: {
+                color: "#4a6a82",
+                formatter: (value) => `${Number(value).toFixed(1)}m`,
+              },
+              splitLine: {
+                lineStyle: { color: "rgba(40, 89, 122, 0.12)", type: "dashed" },
+              },
+            },
+          ],
+      series: chartSeries,
     },
     true
   );
@@ -1397,6 +2157,8 @@ function renderStats() {
   if (!state.sampledSeries || state.sampledSeries.length === 0) {
     dom.currentLevel.textContent = "--";
     dom.currentLevelTime.textContent = "--";
+    dom.currentWind.textContent = "--";
+    dom.currentWindTime.textContent = "--";
     dom.dailyHigh.textContent = "--";
     dom.dailyHighTime.textContent = "--";
     dom.dailyLow.textContent = "--";
@@ -1410,6 +2172,9 @@ function renderStats() {
   ).toMillis();
 
   const current = interpolateSeries(state.sampledSeries, selectedMs);
+  const windSample = findNearestSample(state.windHourly, selectedMs);
+  const windIsNearSelection =
+    windSample && Math.abs(windSample.time - selectedMs) <= 90 * 60 * 1000;
   const extrema = detectExtrema(state.sampledSeries);
   const highSeries = extrema.highs.length > 0 ? extrema.highs : state.sampledSeries;
   const lowSeries = extrema.lows.length > 0 ? extrema.lows : state.sampledSeries;
@@ -1424,6 +2189,8 @@ function renderStats() {
 
   dom.currentLevel.textContent = formatHeight(current);
   dom.currentLevelTime.textContent = toLocalDateString(selectedMs);
+  dom.currentWind.textContent = windIsNearSelection ? formatWind(windSample.value, windSample.direction) : "--";
+  dom.currentWindTime.textContent = windIsNearSelection ? toLocalDateString(windSample.time) : "--";
 
   dom.dailyHigh.textContent = formatHeight(high.value);
   dom.dailyHighTime.textContent = toLocalDateString(high.time);
@@ -1440,12 +2207,33 @@ async function loadTideData() {
   setStatus(t("loading"));
 
   try {
-    const resolved = await resolveSeriesForDate(state.selected.lat, state.selected.lng, state.selectedDate);
+    const [tideResult, windResult] = await Promise.allSettled([
+      resolveSeriesForDate(state.selected.lat, state.selected.lng, state.selectedDate),
+      resolveWindSeries(state.selected.lat, state.selected.lng, state.selectedDate),
+    ]);
     if (currentRequest !== state.requestId) return;
+
+    if (tideResult.status !== "fulfilled") {
+      throw tideResult.reason;
+    }
+
+    const resolved = tideResult.value;
 
     state.sampledSeries = resolved.series;
     state.source = resolved.source;
     state.timezone = resolved.timezone || state.timezone;
+    state.windSeries = windResult.status === "fulfilled" ? windResult.value.series : [];
+    state.windHourly = windResult.status === "fulfilled" ? windResult.value.hourly : [];
+    try {
+      state.referenceExtremes = await resolveReferenceExtremes(
+        state.selected.lat,
+        state.selected.lng,
+        state.timezone
+      );
+    } catch {
+      state.referenceExtremes = null;
+    }
+    if (currentRequest !== state.requestId) return;
 
     updateSourceAndTimezone();
     renderChart();
@@ -1455,6 +2243,9 @@ async function loadTideData() {
   } catch {
     if (currentRequest !== state.requestId) return;
     state.sampledSeries = [];
+    state.windSeries = [];
+    state.windHourly = [];
+    state.referenceExtremes = null;
     renderChart();
     renderStats();
     setStatus(t("fetchError"), true);
@@ -1473,15 +2264,13 @@ function startAutoRefresh() {
   }, 300000);
 }
 
-function init() {
+async function init() {
   fillLanguageSelector();
-  state.lang = normalizeLanguage(navigator.languages?.[0] || navigator.language);
-  dom.language.value = state.lang;
-
   initMap();
   initChart();
   bindEvents();
 
+  await setLanguage(navigator.languages?.[0] || navigator.language, false);
   setDateAndHourFromNow();
   applyStaticI18n();
 
@@ -1490,4 +2279,6 @@ function init() {
   startAutoRefresh();
 }
 
-init();
+init().catch(() => {
+  setStatus("Unable to initialize TideX.", true);
+});

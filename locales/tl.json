@@ -1,0 +1,80 @@
+{
+  "code": "tl",
+  "label": "Tagalog",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Real-time at hinulaang pagtaas-baba ng dagat para sa anumang baybayin sa mundo",
+    "languageLabel": "Wika",
+    "mapSection": "Lokasyon at mga dalampasigan",
+    "locateMe": "Gamitin ang lokasyon ko",
+    "mapHint": "I-tap ang mapa para pumili ng anumang baybayin. Nasa ibaba ang mga kalapit na dalampasigan.",
+    "nearbyBeaches": "Mga kalapit na dalampasigan",
+    "dateLabel": "Petsa",
+    "hourLabel": "Oras",
+    "prevDay": "Nakaraang araw",
+    "now": "Ngayon",
+    "nextDay": "Susunod na araw",
+    "refresh": "I-refresh",
+    "currentLevel": "Napiling oras",
+    "currentWind": "Bugso sa oras na iyon",
+    "rangeSection": "15-araw na tanaw sa taib",
+    "dailyHigh": "Pinakamataas na taib ng araw",
+    "dailyLow": "Pinakamababang taib ng araw",
+    "disclaimer": "Para sa pagpaplano lamang. Huwag gamitin bilang tanging batayan para sa nabigasyon o kaligtasan.",
+    "locating": "Tinutukoy ang iyong lokasyon...",
+    "locationDenied": "Tinanggihan ang pahintulot sa lokasyon. Maaari ka pa ring pumili sa mapa.",
+    "locationError": "Hindi matukoy ang lokasyon. Pumili sa mapa.",
+    "locationUnsupported": "Hindi sinusuportahan ng iyong browser ang geolocation.",
+    "loading": "Naglo-load ng datos ng taib...",
+    "fetchError": "Hindi ma-load ang datos para sa puntong ito sa ngayon.",
+    "sourceObserved": "Pinagmulan: Open-Meteo Marine",
+    "sourceHybrid": "Pinagmulan: direktang serye + harmonic na pagpuno",
+    "sourcePredicted": "Pinagmulan: harmonic na pagtataya (reserba)",
+    "timezoneLabel": "Sona ng oras: {tz}",
+    "beachCount": "{count} dalampasigan",
+    "noneBeaches": "Walang natagpuang may-pangalang dalampasigan sa malapit.",
+    "selectedLocation": "Napili",
+    "myLocation": "Lokasyon ko",
+    "fallbackNotice": "Gumagamit ng harmonic na pagtataya dahil walang direktang serye para sa petsang ito.",
+    "tideHigh": "Taib",
+    "tideLow": "Hupa",
+    "windowHigh": "15a taas",
+    "windowLow": "15a baba"
+  },
+  "seriesLabels": {
+    "tide": "Taib",
+    "wind": "Bugso"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "H",
+      "HS",
+      "S",
+      "TS",
+      "T",
+      "TK",
+      "K",
+      "HK"
+    ],
+    "full": [
+      "Hilaga",
+      "Hilagang-silangan",
+      "Silangan",
+      "Timog-silangan",
+      "Timog",
+      "Timog-kanluran",
+      "Kanluran",
+      "Hilagang-kanluran"
+    ]
+  },
+  "windStrengthLabels": [
+    "Payapa",
+    "Mahina",
+    "Simoy",
+    "Katamtaman",
+    "Malakas",
+    "Mabagyo"
+  ]
+}

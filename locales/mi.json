@@ -1,0 +1,80 @@
+{
+  "code": "mi",
+  "label": "Te Reo Māori",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Ngā tai ā-tūturu me ngā matapae mō ngā takutai katoa o te ao",
+    "languageLabel": "Reo",
+    "mapSection": "Wāhi me ngā takutai",
+    "locateMe": "Whakamahia taku wāhi",
+    "mapHint": "Pāwhiria te mahere hei kōwhiri i tētahi takutai. Ka whakaaturia ngā takutai tata ki raro.",
+    "nearbyBeaches": "Ngā takutai tata",
+    "dateLabel": "Rā",
+    "hourLabel": "Wā",
+    "prevDay": "Rā o mua",
+    "now": "Ināianei",
+    "nextDay": "Rā e whai ake",
+    "refresh": "Tāmata",
+    "currentLevel": "Wā kua tīpakohia",
+    "currentWind": "Te pupuhi hau i taua wā",
+    "rangeSection": "Tirohanga tai mō ngā rā 15",
+    "dailyHigh": "Te tai pari o te rā",
+    "dailyLow": "Te tai timu o te rā",
+    "disclaimer": "Hei tohutoro whakamahere anake. Kaua e whakamahia hei pūtake kotahi mō te whakatere, mō te haumaru rānei.",
+    "locating": "E kimi ana i tō wāhi...",
+    "locationDenied": "Kua whakakāhoretia te urunga wāhi. Ka taea tonu te kōwhiri i te mahere.",
+    "locationError": "Kāore i taea te kimi i te wāhi. Tīpakohia ki te mahere.",
+    "locationUnsupported": "Kāore tō pūtirotiro e tautoko i te geolocation.",
+    "loading": "E uta ana i ngā raraunga tai...",
+    "fetchError": "Kāore e taea te uta raraunga mō tēnei wāhi ināianei.",
+    "sourceObserved": "Puna: Open-Meteo Marine",
+    "sourceHybrid": "Puna: raupapa tika + whakakī taurite",
+    "sourcePredicted": "Puna: matapae taurite (rahui)",
+    "timezoneLabel": "Rohe wā: {tz}",
+    "beachCount": "{count} takutai",
+    "noneBeaches": "Kāore i kitea he takutai whai ingoa i te tata.",
+    "selectedLocation": "Kua tīpakohia",
+    "myLocation": "Taku wāhi",
+    "fallbackNotice": "Kei te whakamahia te matapae taurite nā te mea kāore he raupapa tika mō tēnei rā.",
+    "tideHigh": "Pari",
+    "tideLow": "Timu",
+    "windowHigh": "teitei 15r",
+    "windowLow": "iti 15r"
+  },
+  "seriesLabels": {
+    "tide": "Tai",
+    "wind": "Pupuhi"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "Raki",
+      "Raki mā rāwhiti",
+      "Rāwhiti",
+      "Tonga mā rāwhiti",
+      "Tonga",
+      "Tonga mā uru",
+      "Uru",
+      "Raki mā uru"
+    ]
+  },
+  "windStrengthLabels": [
+    "Marino",
+    "Māmā",
+    "Hau māhaki",
+    "Waenga",
+    "Kaha",
+    "Āwhā"
+  ]
+}

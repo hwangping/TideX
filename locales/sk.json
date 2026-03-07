@@ -1,0 +1,80 @@
+{
+  "code": "sk",
+  "label": "Slovenčina",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Aktuálne a predpovedané prílivy pre akékoľvek pobrežie na svete",
+    "languageLabel": "Jazyk",
+    "mapSection": "Poloha a pláže",
+    "locateMe": "Použiť moju polohu",
+    "mapHint": "Ťuknutím na mapu vyberte ľubovoľné pobrežie. Blízke pláže sú uvedené nižšie.",
+    "nearbyBeaches": "Blízke pláže",
+    "dateLabel": "Dátum",
+    "hourLabel": "Čas",
+    "prevDay": "Predchádzajúci deň",
+    "now": "Teraz",
+    "nextDay": "Ďalší deň",
+    "refresh": "Obnoviť",
+    "currentLevel": "Vybraný čas",
+    "currentWind": "Náraz v tomto čase",
+    "rangeSection": "15-dňový prehľad prílivu",
+    "dailyHigh": "Denný príliv",
+    "dailyLow": "Denný odliv",
+    "disclaimer": "Len na plánovanie. Nepoužívajte ako jediný zdroj pre navigáciu alebo bezpečnosť.",
+    "locating": "Zisťujem vašu polohu...",
+    "locationDenied": "Prístup k polohe bol odmietnutý. Stále môžete vybrať bod na mape.",
+    "locationError": "Nepodarilo sa zistiť polohu. Vyberte bod na mape.",
+    "locationUnsupported": "Váš prehliadač nepodporuje geolokáciu.",
+    "loading": "Načítavam údaje o prílive...",
+    "fetchError": "Údaje pre tento bod sa teraz nedajú načítať.",
+    "sourceObserved": "Zdroj: Open-Meteo Marine",
+    "sourceHybrid": "Zdroj: priama séria + harmonické doplnenie",
+    "sourcePredicted": "Zdroj: harmonická predpoveď (záloha)",
+    "timezoneLabel": "Časové pásmo: {tz}",
+    "beachCount": "{count} pláží",
+    "noneBeaches": "V okolí sa nenašli pomenované pláže.",
+    "selectedLocation": "Vybrané",
+    "myLocation": "Moja poloha",
+    "fallbackNotice": "Používa sa harmonická predpoveď, pretože pre tento dátum nie je dostupná priama séria.",
+    "tideHigh": "Príliv",
+    "tideLow": "Odliv",
+    "windowHigh": "max 15 d",
+    "windowLow": "min 15 d"
+  },
+  "seriesLabels": {
+    "tide": "Príliv",
+    "wind": "Náraz"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "S",
+      "SV",
+      "V",
+      "JV",
+      "J",
+      "JZ",
+      "Z",
+      "SZ"
+    ],
+    "full": [
+      "Sever",
+      "Severovýchod",
+      "Východ",
+      "Juhovýchod",
+      "Juh",
+      "Juhozápad",
+      "Západ",
+      "Severozápad"
+    ]
+  },
+  "windStrengthLabels": [
+    "Bezvetrie",
+    "Slabý",
+    "Vánok",
+    "Mierny",
+    "Silný",
+    "Búrlivý"
+  ]
+}

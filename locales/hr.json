@@ -1,0 +1,80 @@
+{
+  "code": "hr",
+  "label": "Hrvatski",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Stvarne i predviđene plime za bilo koju obalu na svijetu",
+    "languageLabel": "Jezik",
+    "mapSection": "Lokacija i plaže",
+    "locateMe": "Koristi moju lokaciju",
+    "mapHint": "Dodirnite kartu za odabir bilo koje obale. Obližnje plaže prikazane su ispod.",
+    "nearbyBeaches": "Obližnje plaže",
+    "dateLabel": "Datum",
+    "hourLabel": "Vrijeme",
+    "prevDay": "Prethodni dan",
+    "now": "Sada",
+    "nextDay": "Sljedeći dan",
+    "refresh": "Osvježi",
+    "currentLevel": "Odabrano vrijeme",
+    "currentWind": "Udar u to vrijeme",
+    "rangeSection": "15-dnevni pregled plime",
+    "dailyHigh": "Dnevna plima",
+    "dailyLow": "Dnevna oseka",
+    "disclaimer": "Samo za planiranje. Nemoj koristiti kao jedini izvor za navigaciju ili sigurnost.",
+    "locating": "Određivanje vaše lokacije...",
+    "locationDenied": "Pristup lokaciji je odbijen. I dalje možete odabrati na karti.",
+    "locationError": "Određivanje lokacije nije uspjelo. Odaberite na karti.",
+    "locationUnsupported": "Vaš preglednik ne podržava geolokaciju.",
+    "loading": "Učitavanje podataka o plimi...",
+    "fetchError": "Podaci za ovu točku trenutačno se ne mogu učitati.",
+    "sourceObserved": "Izvor: Open-Meteo Marine",
+    "sourceHybrid": "Izvor: izravna serija + harmonijska dopuna",
+    "sourcePredicted": "Izvor: harmonijska prognoza (rezerva)",
+    "timezoneLabel": "Vremenska zona: {tz}",
+    "beachCount": "{count} plaža",
+    "noneBeaches": "U blizini nisu pronađene imenovane plaže.",
+    "selectedLocation": "Odabrano",
+    "myLocation": "Moja lokacija",
+    "fallbackNotice": "Koristi se harmonijska prognoza jer izravna serija nije dostupna za ovaj datum.",
+    "tideHigh": "Plima",
+    "tideLow": "Oseka",
+    "windowHigh": "max 15 d",
+    "windowLow": "min 15 d"
+  },
+  "seriesLabels": {
+    "tide": "Plima",
+    "wind": "Udar"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "S",
+      "SI",
+      "I",
+      "JI",
+      "J",
+      "JZ",
+      "Z",
+      "SZ"
+    ],
+    "full": [
+      "Sjever",
+      "Sjeveroistok",
+      "Istok",
+      "Jugoistok",
+      "Jug",
+      "Jugozapad",
+      "Zapad",
+      "Sjeverozapad"
+    ]
+  },
+  "windStrengthLabels": [
+    "Mirno",
+    "Slab",
+    "Povjetarac",
+    "Umjeren",
+    "Jak",
+    "Olujan"
+  ]
+}

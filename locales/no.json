@@ -1,0 +1,80 @@
+{
+  "code": "no",
+  "label": "Norsk",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Sanntids- og prognosetidevann for alle kystlinjer i verden",
+    "languageLabel": "Språk",
+    "mapSection": "Posisjon og strender",
+    "locateMe": "Bruk posisjonen min",
+    "mapHint": "Trykk på kartet for å velge en kyst. Nærliggende strender vises nedenfor.",
+    "nearbyBeaches": "Nærliggende strender",
+    "dateLabel": "Dato",
+    "hourLabel": "Tid",
+    "prevDay": "Forrige dag",
+    "now": "Nå",
+    "nextDay": "Neste dag",
+    "refresh": "Oppdater",
+    "currentLevel": "Valgt tidspunkt",
+    "currentWind": "Vindkast på tidspunktet",
+    "rangeSection": "15-dagers tidevannsoversikt",
+    "dailyHigh": "Dagens høyvann",
+    "dailyLow": "Dagens lavvann",
+    "disclaimer": "Kun som planleggingsreferanse. Ikke bruk som eneste kilde for navigasjon eller sikkerhet.",
+    "locating": "Finner posisjonen din...",
+    "locationDenied": "Tilgang til posisjon ble avslått. Du kan fortsatt velge på kartet.",
+    "locationError": "Kunne ikke hente posisjon. Velg på kartet.",
+    "locationUnsupported": "Nettleseren din støtter ikke geolokasjon.",
+    "loading": "Laster inn tidevannsdata...",
+    "fetchError": "Kan ikke laste inn data for dette punktet akkurat nå.",
+    "sourceObserved": "Kilde: Open-Meteo Marine",
+    "sourceHybrid": "Kilde: direkte serie + harmonisk utfylling",
+    "sourcePredicted": "Kilde: harmonisk prognose (reserve)",
+    "timezoneLabel": "Tidssone: {tz}",
+    "beachCount": "{count} strender",
+    "noneBeaches": "Fant ingen navngitte strender i nærheten.",
+    "selectedLocation": "Valgt",
+    "myLocation": "Min posisjon",
+    "fallbackNotice": "Bruker harmonisk prognose fordi direkte serie ikke er tilgjengelig for denne datoen.",
+    "tideHigh": "Høyvann",
+    "tideLow": "Lavvann",
+    "windowHigh": "15 d høy",
+    "windowLow": "15 d lav"
+  },
+  "seriesLabels": {
+    "tide": "Tidevann",
+    "wind": "Vindkast"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "Nord",
+      "Nordøst",
+      "Øst",
+      "Sørøst",
+      "Sør",
+      "Sørvest",
+      "Vest",
+      "Nordvest"
+    ]
+  },
+  "windStrengthLabels": [
+    "Stille",
+    "Lett",
+    "Bris",
+    "Moderat",
+    "Sterk",
+    "Stormfull"
+  ]
+}

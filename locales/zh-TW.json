@@ -1,0 +1,80 @@
+{
+  "code": "zh-TW",
+  "label": "繁體中文",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "全球任意海岸即時查看與潮汐預測",
+    "languageLabel": "語言",
+    "mapSection": "位置與海灘",
+    "locateMe": "使用我的位置",
+    "mapHint": "點擊地圖可選擇任意海岸位置，下方會列出附近海灘。",
+    "nearbyBeaches": "附近海灘",
+    "dateLabel": "日期",
+    "hourLabel": "時間",
+    "prevDay": "前一天",
+    "now": "現在",
+    "nextDay": "後一天",
+    "refresh": "重新整理",
+    "currentLevel": "所選時刻",
+    "currentWind": "所選陣風",
+    "rangeSection": "15天潮汐概覽",
+    "dailyHigh": "當日高潮",
+    "dailyLow": "當日低潮",
+    "disclaimer": "僅供行程參考，不可作為航行或安全決策的唯一依據。",
+    "locating": "正在定位...",
+    "locationDenied": "定位權限被拒絕，仍可在地圖上手動選擇。",
+    "locationError": "定位失敗，請在地圖上手動選擇。",
+    "locationUnsupported": "目前瀏覽器不支援地理定位。",
+    "loading": "正在載入潮汐資料...",
+    "fetchError": "目前無法載入此位置資料，請稍後再試。",
+    "sourceObserved": "資料來源：Open-Meteo Marine",
+    "sourceHybrid": "資料來源：直接潮汐 + 諧波補全",
+    "sourcePredicted": "資料來源：諧波預測（回退）",
+    "timezoneLabel": "時區：{tz}",
+    "beachCount": "{count} 個海灘",
+    "noneBeaches": "附近找不到已命名海灘。",
+    "selectedLocation": "目前選擇",
+    "myLocation": "我的位置",
+    "fallbackNotice": "此日期暫無直接序列，已使用諧波模型預測。",
+    "tideHigh": "高潮",
+    "tideLow": "低潮",
+    "windowHigh": "15天最高",
+    "windowLow": "15天最低"
+  },
+  "seriesLabels": {
+    "tide": "潮位",
+    "wind": "陣風"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "北",
+      "東北",
+      "東",
+      "東南",
+      "南",
+      "西南",
+      "西",
+      "西北"
+    ],
+    "full": [
+      "北風",
+      "東北風",
+      "東風",
+      "東南風",
+      "南風",
+      "西南風",
+      "西風",
+      "西北風"
+    ]
+  },
+  "windStrengthLabels": [
+    "無風",
+    "輕風",
+    "和風",
+    "中等",
+    "較強",
+    "大風"
+  ]
+}

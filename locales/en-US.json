@@ -1,0 +1,80 @@
+{
+  "code": "en-US",
+  "label": "English (US)",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Real-time and predicted tides for any coastline in the world",
+    "languageLabel": "Language",
+    "mapSection": "Location & Beaches",
+    "locateMe": "Use my location",
+    "mapHint": "Tap the map to choose any coast. Nearby beaches are listed below.",
+    "nearbyBeaches": "Nearby beaches",
+    "dateLabel": "Date",
+    "hourLabel": "Time",
+    "prevDay": "Prev day",
+    "now": "Now",
+    "nextDay": "Next day",
+    "refresh": "Refresh",
+    "currentLevel": "Selected time",
+    "currentWind": "Gust at time",
+    "rangeSection": "15-day tide outlook",
+    "dailyHigh": "Daily high tide",
+    "dailyLow": "Daily low tide",
+    "disclaimer": "For planning reference only. Do not use as a sole source for navigation or safety decisions.",
+    "locating": "Detecting your location...",
+    "locationDenied": "Location access denied. You can still choose on the map.",
+    "locationError": "Location failed. Please choose on the map.",
+    "locationUnsupported": "Your browser does not support geolocation.",
+    "loading": "Loading tide data...",
+    "fetchError": "Unable to load data for this point right now.",
+    "sourceObserved": "Source: Open-Meteo Marine",
+    "sourceHybrid": "Source: Direct tide + harmonic completion",
+    "sourcePredicted": "Source: Harmonic prediction (fallback)",
+    "timezoneLabel": "Timezone: {tz}",
+    "beachCount": "{count} beaches",
+    "noneBeaches": "No named beaches found nearby.",
+    "selectedLocation": "Selected",
+    "myLocation": "My location",
+    "fallbackNotice": "Using harmonic prediction because direct series is unavailable for this date.",
+    "tideHigh": "High",
+    "tideLow": "Low",
+    "windowHigh": "15d high",
+    "windowLow": "15d low"
+  },
+  "seriesLabels": {
+    "tide": "Tide",
+    "wind": "Gust"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "North",
+      "Northeast",
+      "East",
+      "Southeast",
+      "South",
+      "Southwest",
+      "West",
+      "Northwest"
+    ]
+  },
+  "windStrengthLabels": [
+    "Calm",
+    "Light",
+    "Breeze",
+    "Moderate",
+    "Strong",
+    "Gale"
+  ]
+}

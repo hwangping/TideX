@@ -1,0 +1,80 @@
+{
+  "code": "sw",
+  "label": "Kiswahili",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Mawimbi ya maji kwa wakati halisi na utabiri kwa ufuo wowote duniani",
+    "languageLabel": "Lugha",
+    "mapSection": "Mahali na fukwe",
+    "locateMe": "Tumia eneo langu",
+    "mapHint": "Gusa ramani kuchagua ufuo wowote. Fukwe za karibu zimeorodheshwa hapa chini.",
+    "nearbyBeaches": "Fukwe za karibu",
+    "dateLabel": "Tarehe",
+    "hourLabel": "Saa",
+    "prevDay": "Siku iliyopita",
+    "now": "Sasa",
+    "nextDay": "Siku inayofuata",
+    "refresh": "Sasisha",
+    "currentLevel": "Saa iliyochaguliwa",
+    "currentWind": "Kishindo wakati huo",
+    "rangeSection": "Muhtasari wa mawimbi wa siku 15",
+    "dailyHigh": "Maji kujaa ya siku",
+    "dailyLow": "Maji kupwa ya siku",
+    "disclaimer": "Kwa marejeo ya kupanga tu. Usitumie kama chanzo pekee cha urambazaji au usalama.",
+    "locating": "Inabaini eneo lako...",
+    "locationDenied": "Ufikiaji wa eneo umekataliwa. Bado unaweza kuchagua kwenye ramani.",
+    "locationError": "Imeshindwa kupata eneo. Tafadhali chagua kwenye ramani.",
+    "locationUnsupported": "Kivinjari chako hakitumii geolocation.",
+    "loading": "Inapakia data ya mawimbi...",
+    "fetchError": "Haiwezi kupakia data ya eneo hili kwa sasa.",
+    "sourceObserved": "Chanzo: Open-Meteo Marine",
+    "sourceHybrid": "Chanzo: mfululizo wa moja kwa moja + ukamilishaji wa harmonic",
+    "sourcePredicted": "Chanzo: utabiri wa harmonic (mbadala)",
+    "timezoneLabel": "Ukanda wa saa: {tz}",
+    "beachCount": "fukwe {count}",
+    "noneBeaches": "Hakuna fukwe zilizopewa majina karibu.",
+    "selectedLocation": "Imechaguliwa",
+    "myLocation": "Eneo langu",
+    "fallbackNotice": "Inatumia utabiri wa harmonic kwa sababu mfululizo wa moja kwa moja haupatikani kwa tarehe hii.",
+    "tideHigh": "Maji kujaa",
+    "tideLow": "Maji kupwa",
+    "windowHigh": "juu 15d",
+    "windowLow": "chini 15d"
+  },
+  "seriesLabels": {
+    "tide": "Mawimbi",
+    "wind": "Kishindo"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "K",
+      "KM",
+      "M",
+      "SM",
+      "S",
+      "SG",
+      "G",
+      "KG"
+    ],
+    "full": [
+      "Kaskazini",
+      "Kaskazini-mashariki",
+      "Mashariki",
+      "Kusini-mashariki",
+      "Kusini",
+      "Kusini-magharibi",
+      "Magharibi",
+      "Kaskazini-magharibi"
+    ]
+  },
+  "windStrengthLabels": [
+    "Tulia",
+    "Nyepesi",
+    "Upepo mwanana",
+    "Wastani",
+    "Mkali",
+    "Dhoruba"
+  ]
+}

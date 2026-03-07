@@ -1,0 +1,80 @@
+{
+  "code": "fi",
+  "label": "Suomi",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Reaaliaikaiset ja ennustetut vuorovedet kaikille rannikoille maailmassa",
+    "languageLabel": "Kieli",
+    "mapSection": "Sijainti ja rannat",
+    "locateMe": "Käytä sijaintiani",
+    "mapHint": "Napauta karttaa valitaksesi minkä tahansa rannikon. Lähellä olevat rannat näkyvät alla.",
+    "nearbyBeaches": "Lähistön rannat",
+    "dateLabel": "Päivämäärä",
+    "hourLabel": "Aika",
+    "prevDay": "Edellinen päivä",
+    "now": "Nyt",
+    "nextDay": "Seuraava päivä",
+    "refresh": "Päivitä",
+    "currentLevel": "Valittu aika",
+    "currentWind": "Puuska valittuna aikana",
+    "rangeSection": "15 päivän vuorovesinäkymä",
+    "dailyHigh": "Päivän ylin vuorovesi",
+    "dailyLow": "Päivän alin vuorovesi",
+    "disclaimer": "Vain suunnittelun tueksi. Älä käytä ainoana lähteenä navigointiin tai turvallisuuspäätöksiin.",
+    "locating": "Haetaan sijaintia...",
+    "locationDenied": "Sijainnin käyttö estettiin. Voit silti valita pisteen kartalta.",
+    "locationError": "Sijaintia ei saatu. Valitse piste kartalta.",
+    "locationUnsupported": "Selaimesi ei tue paikannusta.",
+    "loading": "Ladataan vuorovesitietoja...",
+    "fetchError": "Tämän pisteen tietoja ei voida ladata juuri nyt.",
+    "sourceObserved": "Lähde: Open-Meteo Marine",
+    "sourceHybrid": "Lähde: suora sarja + harmoninen täydennys",
+    "sourcePredicted": "Lähde: harmoninen ennuste (varavaihtoehto)",
+    "timezoneLabel": "Aikavyöhyke: {tz}",
+    "beachCount": "{count} rantaa",
+    "noneBeaches": "Lähistöltä ei löytynyt nimettyjä rantoja.",
+    "selectedLocation": "Valittu",
+    "myLocation": "Sijaintini",
+    "fallbackNotice": "Käytetään harmonista ennustetta, koska suoraa sarjaa ei ole tälle päivälle.",
+    "tideHigh": "Korkea",
+    "tideLow": "Matala",
+    "windowHigh": "15 pv korkea",
+    "windowLow": "15 pv matala"
+  },
+  "seriesLabels": {
+    "tide": "Vuorovesi",
+    "wind": "Puuska"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "P",
+      "KO",
+      "I",
+      "KA",
+      "E",
+      "LO",
+      "L",
+      "LU"
+    ],
+    "full": [
+      "Pohjoinen",
+      "Koillinen",
+      "Itä",
+      "Kaakko",
+      "Etelä",
+      "Lounas",
+      "Länsi",
+      "Luode"
+    ]
+  },
+  "windStrengthLabels": [
+    "Tyyntä",
+    "Heikko",
+    "Vire",
+    "Kohtalainen",
+    "Voimakas",
+    "Myrskyinen"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "code": "id",
+  "label": "Bahasa Indonesia",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Pasang surut waktu nyata dan prediksi untuk garis pantai mana pun di dunia",
+    "languageLabel": "Bahasa",
+    "mapSection": "Lokasi & pantai",
+    "locateMe": "Gunakan lokasi saya",
+    "mapHint": "Ketuk peta untuk memilih garis pantai mana pun. Pantai terdekat ditampilkan di bawah.",
+    "nearbyBeaches": "Pantai terdekat",
+    "dateLabel": "Tanggal",
+    "hourLabel": "Waktu",
+    "prevDay": "Hari sebelumnya",
+    "now": "Sekarang",
+    "nextDay": "Hari berikutnya",
+    "refresh": "Muat ulang",
+    "currentLevel": "Waktu terpilih",
+    "currentWind": "Hembusan pada waktu itu",
+    "rangeSection": "Ikhtisar pasang surut 15 hari",
+    "dailyHigh": "Pasang tertinggi harian",
+    "dailyLow": "Surut terendah harian",
+    "disclaimer": "Hanya untuk referensi perencanaan. Jangan gunakan sebagai satu-satunya sumber untuk navigasi atau keselamatan.",
+    "locating": "Mendeteksi lokasi Anda...",
+    "locationDenied": "Akses lokasi ditolak. Anda masih dapat memilih di peta.",
+    "locationError": "Gagal menentukan lokasi. Silakan pilih di peta.",
+    "locationUnsupported": "Browser Anda tidak mendukung geolokasi.",
+    "loading": "Memuat data pasang surut...",
+    "fetchError": "Data untuk titik ini tidak dapat dimuat saat ini.",
+    "sourceObserved": "Sumber: Open-Meteo Marine",
+    "sourceHybrid": "Sumber: seri langsung + pelengkap harmonik",
+    "sourcePredicted": "Sumber: prediksi harmonik (cadangan)",
+    "timezoneLabel": "Zona waktu: {tz}",
+    "beachCount": "{count} pantai",
+    "noneBeaches": "Tidak ada pantai bernama di dekat sini.",
+    "selectedLocation": "Dipilih",
+    "myLocation": "Lokasi saya",
+    "fallbackNotice": "Menggunakan prediksi harmonik karena seri langsung tidak tersedia untuk tanggal ini.",
+    "tideHigh": "Pasang",
+    "tideLow": "Surut",
+    "windowHigh": "maks 15h",
+    "windowLow": "min 15h"
+  },
+  "seriesLabels": {
+    "tide": "Pasang",
+    "wind": "Hembusan"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "U",
+      "TL",
+      "T",
+      "TG",
+      "S",
+      "BD",
+      "B",
+      "BL"
+    ],
+    "full": [
+      "Utara",
+      "Timur Laut",
+      "Timur",
+      "Tenggara",
+      "Selatan",
+      "Barat Daya",
+      "Barat",
+      "Barat Laut"
+    ]
+  },
+  "windStrengthLabels": [
+    "Tenang",
+    "Ringan",
+    "Sepoi",
+    "Sedang",
+    "Kencang",
+    "Badai"
+  ]
+}

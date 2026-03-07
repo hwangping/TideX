@@ -1,0 +1,80 @@
+{
+  "code": "nl",
+  "label": "Nederlands",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Realtime en voorspelde getijden voor elke kustlijn ter wereld",
+    "languageLabel": "Taal",
+    "mapSection": "Locatie en stranden",
+    "locateMe": "Gebruik mijn locatie",
+    "mapHint": "Tik op de kaart om een kust te kiezen. Nabije stranden staan hieronder.",
+    "nearbyBeaches": "Stranden in de buurt",
+    "dateLabel": "Datum",
+    "hourLabel": "Tijd",
+    "prevDay": "Vorige dag",
+    "now": "Nu",
+    "nextDay": "Volgende dag",
+    "refresh": "Vernieuwen",
+    "currentLevel": "Geselecteerd tijdstip",
+    "currentWind": "Windstoot op dat moment",
+    "rangeSection": "15-daags getijdenoverzicht",
+    "dailyHigh": "Dagelijks hoogwater",
+    "dailyLow": "Dagelijks laagwater",
+    "disclaimer": "Alleen als planningsreferentie. Niet gebruiken als enige bron voor navigatie of veiligheid.",
+    "locating": "Je locatie wordt bepaald...",
+    "locationDenied": "Locatietoegang geweigerd. Je kunt nog steeds op de kaart kiezen.",
+    "locationError": "Locatie bepalen mislukt. Kies een punt op de kaart.",
+    "locationUnsupported": "Je browser ondersteunt geen geolocatie.",
+    "loading": "Getijdedata laden...",
+    "fetchError": "Kan de gegevens voor dit punt nu niet laden.",
+    "sourceObserved": "Bron: Open-Meteo Marine",
+    "sourceHybrid": "Bron: directe reeks + harmonische aanvulling",
+    "sourcePredicted": "Bron: harmonische voorspelling (fallback)",
+    "timezoneLabel": "Tijdzone: {tz}",
+    "beachCount": "{count} stranden",
+    "noneBeaches": "Geen benoemde stranden in de buurt gevonden.",
+    "selectedLocation": "Geselecteerd",
+    "myLocation": "Mijn locatie",
+    "fallbackNotice": "Harmonische voorspelling wordt gebruikt omdat voor deze datum geen directe reeks beschikbaar is.",
+    "tideHigh": "Hoog",
+    "tideLow": "Laag",
+    "windowHigh": "15d hoog",
+    "windowLow": "15d laag"
+  },
+  "seriesLabels": {
+    "tide": "Getij",
+    "wind": "Windstoot"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "Noord",
+      "Noordoost",
+      "Oost",
+      "Zuidoost",
+      "Zuid",
+      "Zuidwest",
+      "West",
+      "Noordwest"
+    ]
+  },
+  "windStrengthLabels": [
+    "Kalm",
+    "Licht",
+    "Bries",
+    "Matig",
+    "Sterk",
+    "Stormachtig"
+  ]
+}

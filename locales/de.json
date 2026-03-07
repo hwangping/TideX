@@ -1,0 +1,80 @@
+{
+  "code": "de",
+  "label": "Deutsch",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Echtzeit- und Prognose-Gezeiten für jede Küste weltweit",
+    "languageLabel": "Sprache",
+    "mapSection": "Position und Strände",
+    "locateMe": "Meinen Standort nutzen",
+    "mapHint": "Tippe auf die Karte, um eine beliebige Küste auszuwählen. Nahe Strände erscheinen unten.",
+    "nearbyBeaches": "Nahe Strände",
+    "dateLabel": "Datum",
+    "hourLabel": "Uhrzeit",
+    "prevDay": "Vortag",
+    "now": "Jetzt",
+    "nextDay": "Nächster Tag",
+    "refresh": "Aktualisieren",
+    "currentLevel": "Gewählte Zeit",
+    "currentWind": "Böe zu dieser Zeit",
+    "rangeSection": "15-Tage-Gezeitenübersicht",
+    "dailyHigh": "Tageshochwasser",
+    "dailyLow": "Tagestiefwasser",
+    "disclaimer": "Nur zur Planung. Nicht als einzige Quelle für Navigation oder Sicherheit verwenden.",
+    "locating": "Standort wird ermittelt...",
+    "locationDenied": "Standortzugriff verweigert. Auswahl auf der Karte ist möglich.",
+    "locationError": "Standort fehlgeschlagen. Bitte auf der Karte wählen.",
+    "locationUnsupported": "Ihr Browser unterstützt keine Geolokalisierung.",
+    "loading": "Gezeitendaten werden geladen...",
+    "fetchError": "Daten für diesen Punkt konnten nicht geladen werden.",
+    "sourceObserved": "Quelle: Open-Meteo Marine",
+    "sourceHybrid": "Quelle: direkte Reihe + harmonische Ergänzung",
+    "sourcePredicted": "Quelle: harmonische Vorhersage (Fallback)",
+    "timezoneLabel": "Zeitzone: {tz}",
+    "beachCount": "{count} Strände",
+    "noneBeaches": "Keine benannten Strände in der Nähe gefunden.",
+    "selectedLocation": "Ausgewählt",
+    "myLocation": "Mein Standort",
+    "fallbackNotice": "Harmonische Vorhersage, da direkte Reihe für dieses Datum fehlt.",
+    "tideHigh": "Hoch",
+    "tideLow": "Niedrig",
+    "windowHigh": "15T Hoch",
+    "windowLow": "15T Tief"
+  },
+  "seriesLabels": {
+    "tide": "Gezeit",
+    "wind": "Böe"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "Nord",
+      "Nordost",
+      "Ost",
+      "Südost",
+      "Süd",
+      "Südwest",
+      "West",
+      "Nordwest"
+    ]
+  },
+  "windStrengthLabels": [
+    "Still",
+    "Leicht",
+    "Brise",
+    "Mäßig",
+    "Stark",
+    "Sturm"
+  ]
+}

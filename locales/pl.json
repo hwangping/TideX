@@ -1,0 +1,80 @@
+{
+  "code": "pl",
+  "label": "Polski",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Bieżące i prognozowane pływy dla dowolnego wybrzeża na świecie",
+    "languageLabel": "Język",
+    "mapSection": "Lokalizacja i plaże",
+    "locateMe": "Użyj mojej lokalizacji",
+    "mapHint": "Dotknij mapy, aby wybrać dowolne wybrzeże. Pobliskie plaże są poniżej.",
+    "nearbyBeaches": "Pobliskie plaże",
+    "dateLabel": "Data",
+    "hourLabel": "Godzina",
+    "prevDay": "Poprzedni dzień",
+    "now": "Teraz",
+    "nextDay": "Następny dzień",
+    "refresh": "Odśwież",
+    "currentLevel": "Wybrana godzina",
+    "currentWind": "Poryw o tej godzinie",
+    "rangeSection": "15-dniowy przegląd pływów",
+    "dailyHigh": "Dzisiejszy przypływ",
+    "dailyLow": "Dzisiejszy odpływ",
+    "disclaimer": "Tylko do planowania. Nie używaj jako jedynego źródła do nawigacji ani decyzji bezpieczeństwa.",
+    "locating": "Wykrywanie lokalizacji...",
+    "locationDenied": "Dostęp do lokalizacji został odrzucony. Nadal możesz wybrać punkt na mapie.",
+    "locationError": "Nie udało się ustalić lokalizacji. Wybierz punkt na mapie.",
+    "locationUnsupported": "Twoja przeglądarka nie obsługuje geolokalizacji.",
+    "loading": "Ładowanie danych pływów...",
+    "fetchError": "Nie można teraz załadować danych dla tego punktu.",
+    "sourceObserved": "Źródło: Open-Meteo Marine",
+    "sourceHybrid": "Źródło: seria bezpośrednia + uzupełnienie harmoniczne",
+    "sourcePredicted": "Źródło: prognoza harmoniczna (awaryjna)",
+    "timezoneLabel": "Strefa czasowa: {tz}",
+    "beachCount": "{count} plaż",
+    "noneBeaches": "W pobliżu nie znaleziono nazwanych plaż.",
+    "selectedLocation": "Wybrane",
+    "myLocation": "Moja lokalizacja",
+    "fallbackNotice": "Używana jest prognoza harmoniczna, ponieważ bezpośrednia seria nie jest dostępna dla tej daty.",
+    "tideHigh": "Przypływ",
+    "tideLow": "Odpływ",
+    "windowHigh": "max 15 d",
+    "windowLow": "min 15 d"
+  },
+  "seriesLabels": {
+    "tide": "Pływ",
+    "wind": "Poryw"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "Północ",
+      "Północny wschód",
+      "Wschód",
+      "Południowy wschód",
+      "Południe",
+      "Południowy zachód",
+      "Zachód",
+      "Północny zachód"
+    ]
+  },
+  "windStrengthLabels": [
+    "Cisza",
+    "Słaby",
+    "Bryza",
+    "Umiarkowany",
+    "Silny",
+    "Sztormowy"
+  ]
+}

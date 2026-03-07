@@ -1,0 +1,80 @@
+{
+  "code": "fr",
+  "label": "Français",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Marées en temps réel et prévisions pour toutes les côtes du monde",
+    "languageLabel": "Langue",
+    "mapSection": "Position et plages",
+    "locateMe": "Utiliser ma position",
+    "mapHint": "Touchez la carte pour choisir n'importe quelle côte. Les plages proches sont listées ci-dessous.",
+    "nearbyBeaches": "Plages proches",
+    "dateLabel": "Date",
+    "hourLabel": "Heure",
+    "prevDay": "Jour précédent",
+    "now": "Maintenant",
+    "nextDay": "Jour suivant",
+    "refresh": "Actualiser",
+    "currentLevel": "Heure sélectionnée",
+    "currentWind": "Rafale à cette heure",
+    "rangeSection": "Vue des marées sur 15 jours",
+    "dailyHigh": "Pleine mer du jour",
+    "dailyLow": "Basse mer du jour",
+    "disclaimer": "Référence de planification uniquement. Ne pas utiliser comme unique source de navigation ou de sécurité.",
+    "locating": "Détection de votre position...",
+    "locationDenied": "Accès à la localisation refusé. Vous pouvez choisir sur la carte.",
+    "locationError": "Échec de la localisation. Choisissez un point sur la carte.",
+    "locationUnsupported": "La géolocalisation n'est pas prise en charge par votre navigateur.",
+    "loading": "Chargement des données de marée...",
+    "fetchError": "Impossible de charger les données pour ce point pour le moment.",
+    "sourceObserved": "Source : Open-Meteo Marine",
+    "sourceHybrid": "Source : série directe + complément harmonique",
+    "sourcePredicted": "Source : prévision harmonique (secours)",
+    "timezoneLabel": "Fuseau : {tz}",
+    "beachCount": "{count} plages",
+    "noneBeaches": "Aucune plage nommée trouvée à proximité.",
+    "selectedLocation": "Sélection",
+    "myLocation": "Ma position",
+    "fallbackNotice": "Prévision harmonique utilisée car la série directe est indisponible pour cette date.",
+    "tideHigh": "Pleine",
+    "tideLow": "Basse",
+    "windowHigh": "max 15 j",
+    "windowLow": "min 15 j"
+  },
+  "seriesLabels": {
+    "tide": "Marée",
+    "wind": "Rafale"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "Nord",
+      "Nord-Est",
+      "Est",
+      "Sud-Est",
+      "Sud",
+      "Sud-Ouest",
+      "Ouest",
+      "Nord-Ouest"
+    ]
+  },
+  "windStrengthLabels": [
+    "Calme",
+    "Léger",
+    "Brise",
+    "Modéré",
+    "Fort",
+    "Coup de vent"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "code": "he",
+  "label": "עברית",
+  "dir": "rtl",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "גאות ושפל בזמן אמת ובתחזית לכל קו חוף בעולם",
+    "languageLabel": "שפה",
+    "mapSection": "מיקום וחופים",
+    "locateMe": "השתמש במיקום שלי",
+    "mapHint": "הקשו על המפה כדי לבחור כל חוף. החופים הקרובים מוצגים למטה.",
+    "nearbyBeaches": "חופים קרובים",
+    "dateLabel": "תאריך",
+    "hourLabel": "שעה",
+    "prevDay": "יום קודם",
+    "now": "עכשיו",
+    "nextDay": "יום הבא",
+    "refresh": "רענון",
+    "currentLevel": "זמן נבחר",
+    "currentWind": "משב בזמן זה",
+    "rangeSection": "סקירת גאות ושפל ל-15 ימים",
+    "dailyHigh": "שיא הגאות היומי",
+    "dailyLow": "שפל יומי",
+    "disclaimer": "לצורכי תכנון בלבד. אין להשתמש כמקור יחיד לניווט או להחלטות בטיחות.",
+    "locating": "מאתר את המיקום שלך...",
+    "locationDenied": "הגישה למיקום נדחתה. עדיין אפשר לבחור על המפה.",
+    "locationError": "איתור המיקום נכשל. בחרו על המפה.",
+    "locationUnsupported": "הדפדפן שלך אינו תומך במיקום גיאוגרפי.",
+    "loading": "טוען נתוני גאות ושפל...",
+    "fetchError": "לא ניתן לטעון נתונים עבור נקודה זו כעת.",
+    "sourceObserved": "מקור: Open-Meteo Marine",
+    "sourceHybrid": "מקור: סדרה ישירה + השלמה הרמונית",
+    "sourcePredicted": "מקור: תחזית הרמונית (גיבוי)",
+    "timezoneLabel": "אזור זמן: {tz}",
+    "beachCount": "{count} חופים",
+    "noneBeaches": "לא נמצאו חופים בשם באזור.",
+    "selectedLocation": "נבחר",
+    "myLocation": "המיקום שלי",
+    "fallbackNotice": "נעשה שימוש בתחזית הרמונית כי אין סדרה ישירה לתאריך זה.",
+    "tideHigh": "גאות",
+    "tideLow": "שפל",
+    "windowHigh": "שיא 15 י׳",
+    "windowLow": "שפל 15 י׳"
+  },
+  "seriesLabels": {
+    "tide": "גאות",
+    "wind": "משב"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "צפון",
+      "צפון-מזרח",
+      "מזרח",
+      "דרום-מזרח",
+      "דרום",
+      "דרום-מערב",
+      "מערב",
+      "צפון-מערב"
+    ]
+  },
+  "windStrengthLabels": [
+    "שקט",
+    "קל",
+    "בריזה",
+    "בינוני",
+    "חזק",
+    "סוער"
+  ]
+}

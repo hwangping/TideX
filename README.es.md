@@ -1,94 +1,87 @@
 # TideX
 
-TideX es una app web global de mareas diseñada con enfoque mobile-first. Los usuarios pueden abrirla directamente en el navegador del teléfono (ya desplegada en Vercel), elegir cualquier punto costero en el mapa y consultar la tendencia del nivel del mar y las horas exactas de pleamar.
+Mareas en tiempo real y pronóstico para cualquier costa del mundo
 
-## Acceso en línea
+Aplicación en línea: [https://tide-x.vercel.app](https://tide-x.vercel.app)
 
-- Producción (Vercel): `https://tide-x.vercel.app`
+## Resumen
 
-## Enfoque del proyecto
+TideX ahora es una sola aplicación web desplegada desde la raíz del repositorio. Para usuarios de GitHub, esto significa un único código para escritorio, navegador móvil e instalación en la pantalla de inicio.
 
-- Usuarios objetivo: surf, pesca costera, viajes de playa, actividades portuarias
-- Valor principal: selección global, visualización clara, UX fluida, sin instalación
-- Despliegue: frontend estático puro, fácil de alojar en Vercel/GitHub Pages/Netlify
+## Funciones principales
 
-## Funcionalidades principales
+- Selecciona cualquier punto costero en el mapa o salta a tu ubicación actual.
+- Encuentra playas cercanas con nombre usando datos de OpenStreetMap.
+- Consulta una curva de marea de 24 horas con marcas de pleamar y líneas de referencia alta/baja de 15 días.
+- Compara altura de marea, velocidad de ráfaga y dirección del viento en una sola vista.
+- Explora fechas pasadas, actuales y futuras con respaldo armónico fuera de la ventana de datos directos.
+- Usa la misma PWA adaptable en escritorio, web móvil y pantalla de inicio.
 
-- Selección global de punto costero en el mapa
-- Geolocalización automática del usuario
-- Lista de playas cercanas desde OpenStreetMap
-- Curva de marea de 24 horas
-- Marcado de horas de pleamar en la curva
-- Selección de fecha/hora en pasado, presente y futuro
-- Predicción armónica de respaldo cuando no hay serie directa
-- Interfaz multilingüe: 12 idiomas
+## Fuentes de datos gratuitas
 
-## Experiencia móvil
+- Open-Meteo Marine: series de marea / nivel del mar
+- Open-Meteo Forecast: velocidad de ráfaga y dirección del viento
+- Teselas de OpenStreetMap: mapa base
+- Overpass API: búsqueda de playas cercanas
+- Nominatim: geocodificación inversa de puntos seleccionados
 
-- Diseño responsive para iPhone y Android
-- Interacciones táctiles optimizadas
-- Interfaz moderna y legible en exteriores
-- Frontend liviano con respuesta fluida
+## Enfoque de predicción
 
-## Fuentes de datos y lógica de predicción (todo gratis)
+1. Usa la serie directa de marea cuando exista para el punto y la fecha seleccionados.
+1. Suaviza la curva diaria con interpolación cúbica monótona.
+1. Completa huecos parciales con un modelo armónico.
+1. Recurre a un modelo armónico de mareas cuando no hay datos directos.
+1. Refina las horas de pleamar con detección de extremos locales e interpolación cuadrática.
 
-- Serie de nivel del mar/marea: Open-Meteo Marine API
-- Mapa base: OpenStreetMap
-- POI de playas: OpenStreetMap Overpass API
-- Geocodificación inversa: Nominatim
-- Predicción: ajuste armónico con series históricas cuando falta el día objetivo
+## Instalar como app
 
-## Algoritmo de Predicción (Resumen)
+1. Abre [https://tide-x.vercel.app](https://tide-x.vercel.app) en Safari, Chrome u otro navegador moderno.
+1. Usa `Añadir a pantalla de inicio` o `Instalar aplicación` desde el menú del navegador.
+1. Inicia TideX como una app normal manteniendo el mismo despliegue web.
 
-TideX aplica una estrategia de dos etapas: datos directos primero y modelo de respaldo después.
+## Internacionalización
 
-- Serie directa primero: si existe una serie horaria para la fecha elegida, se usa directamente.
-- Suavizado de curva: la serie horaria se densifica con interpolación cúbica monótona.
-- Respaldo predictivo: si faltan datos directos, TideX ajusta un modelo armónico con datos históricos.
-- Método de ajuste: se estiman múltiples constituyentes de marea (bases seno/coseno) por mínimos cuadrados.
-- Hora de pleamar: se detectan extremos locales y se refinan con interpolación cuadrática.
+- Los paquetes de idioma en tiempo de ejecución viven en `locales/` y se cargan desde JSON.
+- El repositorio incluye 42 idiomas, con soporte RTL para árabe, hebreo y urdu.
+- Ejecuta `node scripts/generate-locales.mjs` después de editar idiomas para reconstruir `locales/index.json`.
 
-## Stack técnico
+## Estructura del proyecto
 
-- Frontend: HTML + CSS + JavaScript
-- Mapa: Leaflet
-- Gráficas: ECharts
-- Manejo de tiempo: Luxon
-- Despliegue: Vercel (hosting estático)
+```text
+TideX/
+├─ index.html
+├─ styles.css
+├─ app.js
+├─ locales/
+├─ icons/
+├─ manifest.webmanifest
+├─ service-worker.js
+├─ offline.html
+├─ scripts/
+│  ├─ generate-locales.mjs
+│  └─ generate-readmes.mjs
+├─ README.md
+└─ README.<locale>.md
+```
 
 ## Desarrollo local
+
+Sirve la raíz del repositorio con cualquier servidor estático:
 
 ```bash
 cd TideX
 python3 -m http.server 5173
 ```
 
-Abrir: `http://localhost:5173`
+Después abre `http://localhost:5173`.
 
-## Recomendaciones para Vercel
+## Despliegue
 
-- Framework Preset: `Other`
-- Build Command: vacío (sitio estático)
-- Output Directory: vacío (raíz del proyecto)
-- HTTPS habilitado para geolocalización más estable
-
-## README en otros idiomas
-
-- English: [`README.en.md`](./README.en.md)
-- 简体中文: [`README.zh-CN.md`](./README.zh-CN.md)
-- 繁體中文: [`README.zh-TW.md`](./README.zh-TW.md)
-- 日本語: [`README.ja.md`](./README.ja.md)
-- 한국어: [`README.ko.md`](./README.ko.md)
-- Français: [`README.fr.md`](./README.fr.md)
-- Español: [`README.es.md`](./README.es.md)
-- Deutsch: [`README.de.md`](./README.de.md)
-- Italiano: [`README.it.md`](./README.it.md)
-- Tiếng Việt: [`README.vi.md`](./README.vi.md)
-- ไทย: [`README.th.md`](./README.th.md)
-- Bahasa Melayu: [`README.ms.md`](./README.ms.md)
+- Despliega la raíz del repositorio en Vercel, Netlify, Cloudflare Pages o cualquier hosting estático.
+- No se requiere paso de compilación.
+- La aplicación raíz ya incluye manifiesto PWA, iconos y service worker.
 
 ## Aviso
 
-- Este proyecto es solo para referencia y planificación.
-- No debe usarse como fuente única para navegación o seguridad.
-- Las condiciones reales pueden variar por viento, presión y topografía local.
+- TideX sirve para planificar y entender la playa, no como sistema certificado de navegación.
+- Las condiciones reales pueden variar por presión, oleaje, caudal fluvial, batimetría local y tiempo atmosférico.

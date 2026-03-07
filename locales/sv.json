@@ -1,0 +1,80 @@
+{
+  "code": "sv",
+  "label": "Svenska",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Tidsaktuella och prognostiserade tidvatten för alla kuster i världen",
+    "languageLabel": "Språk",
+    "mapSection": "Plats och stränder",
+    "locateMe": "Använd min plats",
+    "mapHint": "Tryck på kartan för att välja valfri kust. Närliggande stränder listas nedan.",
+    "nearbyBeaches": "Stränder i närheten",
+    "dateLabel": "Datum",
+    "hourLabel": "Tid",
+    "prevDay": "Föregående dag",
+    "now": "Nu",
+    "nextDay": "Nästa dag",
+    "refresh": "Uppdatera",
+    "currentLevel": "Vald tid",
+    "currentWind": "Vindby vid tiden",
+    "rangeSection": "15-dagars tidvattenöversikt",
+    "dailyHigh": "Dagens högvatten",
+    "dailyLow": "Dagens lågvatten",
+    "disclaimer": "Endast för planeringsreferens. Använd inte som enda källa för navigering eller säkerhet.",
+    "locating": "Hämtar din plats...",
+    "locationDenied": "Åtkomst till plats nekades. Du kan fortfarande välja på kartan.",
+    "locationError": "Platsbestämning misslyckades. Välj på kartan.",
+    "locationUnsupported": "Din webbläsare stöder inte geolokalisering.",
+    "loading": "Läser in tidvattendata...",
+    "fetchError": "Det går inte att läsa in data för den här platsen just nu.",
+    "sourceObserved": "Källa: Open-Meteo Marine",
+    "sourceHybrid": "Källa: direkt serie + harmonisk komplettering",
+    "sourcePredicted": "Källa: harmonisk prognos (reserv)",
+    "timezoneLabel": "Tidszon: {tz}",
+    "beachCount": "{count} stränder",
+    "noneBeaches": "Inga namngivna stränder hittades i närheten.",
+    "selectedLocation": "Vald",
+    "myLocation": "Min plats",
+    "fallbackNotice": "Harmonisk prognos används eftersom direkt serie saknas för detta datum.",
+    "tideHigh": "Högvatten",
+    "tideLow": "Lågvatten",
+    "windowHigh": "15 d hög",
+    "windowLow": "15 d låg"
+  },
+  "seriesLabels": {
+    "tide": "Tidvatten",
+    "wind": "Vindby"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "Norr",
+      "Nordost",
+      "Öst",
+      "Sydost",
+      "Söder",
+      "Sydväst",
+      "Väst",
+      "Nordväst"
+    ]
+  },
+  "windStrengthLabels": [
+    "Lugnt",
+    "Lätt",
+    "Bris",
+    "Måttlig",
+    "Stark",
+    "Stormig"
+  ]
+}

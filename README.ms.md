@@ -1,94 +1,87 @@
 # TideX
 
-TideX ialah aplikasi web pasang surut global yang direka secara mobile-first. Pengguna boleh terus akses melalui pelayar telefon (sudah dideploy di Vercel), pilih mana-mana titik pantai pada peta, dan lihat trend paras laut serta waktu pasang tinggi yang tepat untuk hari tersebut.
+Pasang surut masa nyata dan ramalan untuk mana-mana pesisir di dunia
 
-## Akses Dalam Talian
+Aplikasi langsung: [https://tide-x.vercel.app](https://tide-x.vercel.app)
 
-- Production (Vercel): `https://tide-x.vercel.app`
+## Gambaran keseluruhan
 
-## Kedudukan Projek
+TideX kini ialah satu aplikasi web pasang surut yang diterbitkan terus dari akar repositori. Bagi pengguna GitHub, ini bermaksud satu pangkalan kod untuk desktop, pelayar mudah alih dan pemasangan pada skrin utama.
 
-- Pengguna sasaran: meluncur, memancing pesisir, aktiviti pelabuhan, lawatan pantai
-- Nilai utama: pemilihan lokasi global, visual jelas, UX lancar, tanpa pemasangan aplikasi
-- Model deployment: frontend statik sepenuhnya, mudah dihoskan di Vercel/GitHub Pages/Netlify
+## Sorotan utama
 
-## Ciri Utama
+- Pilih mana-mana titik pesisir pada peta atau terus lompat ke lokasi semasa anda.
+- Cari pantai bernama berdekatan menggunakan data OpenStreetMap.
+- Lihat lengkung pasang surut 24 jam dengan masa air pasang dan garis rujukan 15 hari.
+- Bandingkan ketinggian pasang surut, hembusan angin dan arah angin dalam paparan yang sama.
+- Semak tarikh lalu, semasa dan akan datang dengan fallback harmonik di luar tetingkap data langsung.
+- Gunakan PWA responsif yang sama pada desktop, web mudah alih dan skrin utama.
 
-- Pilih lokasi pantai global pada peta
-- Pengesanan lokasi pengguna secara automatik
-- Senarai pantai berdekatan daripada OpenStreetMap
-- Graf pasang surut 24 jam
-- Penanda masa pasang tinggi pada graf
-- Pilihan tarikh/jam untuk masa lalu, semasa dan masa hadapan
-- Ramalan harmonik automatik apabila data terus tiada
-- UI berbilang bahasa (12 bahasa)
+## Sumber data percuma
 
-## Pengalaman Mudah Alih
+- Open-Meteo Marine: siri pasang surut / paras laut
+- Open-Meteo Forecast: kelajuan hembusan dan arah angin
+- Jubin OpenStreetMap: peta asas
+- Overpass API: carian pantai berdekatan
+- Nominatim: geokod songsang untuk titik yang dipilih
 
-- Susun atur responsif untuk iPhone dan Android
-- Interaksi sentuhan dioptimumkan untuk peta, peluncur dan butang
-- Reka bentuk moden, mudah dibaca di luar
-- Frontend ringan dan responsif
+## Pendekatan ramalan
 
-## Sumber Data dan Logik Ramalan (Semua Percuma)
+1. Gunakan siri pasang surut langsung apabila tersedia untuk titik dan tarikh yang dipilih.
+1. Licinkan lengkung harian dengan interpolasi kubik monoton.
+1. Isi jurang separa dengan pelengkap harmonik.
+1. Berundur kepada model pasang surut harmonik apabila data langsung tiada.
+1. Perhalus masa air pasang dengan pengesanan ekstrem setempat dan interpolasi kuadratik.
 
-- Siri paras laut/pasang surut: Open-Meteo Marine API
-- Peta asas: OpenStreetMap
-- POI pantai: OpenStreetMap Overpass API
-- Geokod songsang: Nominatim
-- Ramalan: harmonic fitting berdasarkan siri sejarah apabila data hari sasaran tiada
+## Pasang sebagai aplikasi
 
-## Algoritma Ramalan (Ringkas)
+1. Buka [https://tide-x.vercel.app](https://tide-x.vercel.app) dalam Safari, Chrome atau pelayar moden lain.
+1. Gunakan `Tambah ke Skrin Utama` atau `Pasang Aplikasi` daripada menu pelayar.
+1. Lancarkan TideX seperti aplikasi biasa sambil mengekalkan deployment web yang sama.
 
-TideX menggunakan strategi dua peringkat: data langsung dahulu, model sandaran jika data tiada.
+## Pengantarabangsaan
 
-- Siri langsung diutamakan: jika data paras laut setiap jam wujud untuk tarikh dipilih, data itu digunakan terus.
-- Pelicinan lengkung: siri setiap jam dipadatkan dengan interpolasi kubik monotone.
-- Ramalan sandaran: jika siri langsung tiada, TideX memadankan model harmonik daripada data sejarah.
-- Kaedah padanan: beberapa konstituen pasang surut (asas sinus/kosinus) dianggar dengan least squares.
-- Masa pasang tinggi: titik ekstrem tempatan dikesan dan diperhalusi dengan interpolasi kuadratik.
+- Pek bahasa runtime berada dalam `locales/` dan dimuatkan daripada JSON.
+- Repositori ini menyertakan 42 bahasa termasuk sokongan RTL untuk Arab, Ibrani dan Urdu.
+- Selepas mengubah fail bahasa, jalankan `node scripts/generate-locales.mjs` untuk membina semula `locales/index.json`.
 
-## Teknologi Digunakan
+## Struktur projek
 
-- Frontend: HTML + CSS + JavaScript
-- Peta: Leaflet
-- Carta: ECharts
-- Pengurusan masa: Luxon
-- Deployment: Vercel (hosting statik)
+```text
+TideX/
+├─ index.html
+├─ styles.css
+├─ app.js
+├─ locales/
+├─ icons/
+├─ manifest.webmanifest
+├─ service-worker.js
+├─ offline.html
+├─ scripts/
+│  ├─ generate-locales.mjs
+│  └─ generate-readmes.mjs
+├─ README.md
+└─ README.<locale>.md
+```
 
-## Pembangunan Lokal
+## Pembangunan tempatan
+
+Hidangkan akar repositori dengan mana-mana pelayan fail statik:
 
 ```bash
 cd TideX
 python3 -m http.server 5173
 ```
 
-Buka: `http://localhost:5173`
+Kemudian buka `http://localhost:5173`.
 
-## Cadangan Tetapan Vercel
+## Deployment
 
-- Framework Preset: `Other`
-- Build Command: kosong (laman statik)
-- Output Directory: kosong (deploy terus dari root)
-- Gunakan HTTPS untuk kestabilan geolokasi pada mudah alih
-
-## README Pelbagai Bahasa
-
-- English: [`README.en.md`](./README.en.md)
-- 简体中文: [`README.zh-CN.md`](./README.zh-CN.md)
-- 繁體中文: [`README.zh-TW.md`](./README.zh-TW.md)
-- 日本語: [`README.ja.md`](./README.ja.md)
-- 한국어: [`README.ko.md`](./README.ko.md)
-- Français: [`README.fr.md`](./README.fr.md)
-- Español: [`README.es.md`](./README.es.md)
-- Deutsch: [`README.de.md`](./README.de.md)
-- Italiano: [`README.it.md`](./README.it.md)
-- Tiếng Việt: [`README.vi.md`](./README.vi.md)
-- ไทย: [`README.th.md`](./README.th.md)
-- Bahasa Melayu: [`README.ms.md`](./README.ms.md)
+- Deploy akar repositori ke Vercel, Netlify, Cloudflare Pages atau mana-mana hos statik.
+- Tiada langkah build diperlukan.
+- Aplikasi akar sudah termasuk manifest PWA, ikon dan service worker.
 
 ## Penafian
 
-- Projek ini untuk rujukan dan perancangan sahaja.
-- Jangan gunakan sebagai satu-satunya sumber untuk navigasi atau keselamatan.
-- Keadaan sebenar boleh berbeza akibat angin, tekanan udara dan bentuk muka pantai.
+- TideX adalah untuk perancangan perjalanan dan kefahaman pesisir, bukan navigasi bertauliah.
+- Keadaan sebenar boleh berbeza kerana tekanan, alun, aliran sungai, batimetri setempat dan cuaca.

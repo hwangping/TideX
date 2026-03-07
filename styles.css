@@ -9,10 +9,6 @@
   --danger: #f97316;
   --chip: #e9f6ff;
   --shadow: 0 18px 45px rgba(13, 58, 92, 0.14);
-  --safe-top: env(safe-area-inset-top, 0px);
-  --safe-right: env(safe-area-inset-right, 0px);
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
-  --safe-left: env(safe-area-inset-left, 0px);
 }
 
 * {
@@ -30,7 +26,6 @@ body {
   color: var(--text);
   background: radial-gradient(circle at 6% 12%, #d8f4ff 0%, #f2f9ff 30%, #eef6fc 100%);
   -webkit-font-smoothing: antialiased;
-  overscroll-behavior-y: none;
 }
 
 .bg-orb {
@@ -63,10 +58,7 @@ body {
   z-index: 1;
   width: min(1180px, 100%);
   margin: 0 auto;
-  padding-top: calc(18px + var(--safe-top));
-  padding-right: calc(16px + var(--safe-right));
-  padding-bottom: calc(28px + var(--safe-bottom));
-  padding-left: calc(16px + var(--safe-left));
+  padding: 20px 16px 28px;
 }
 
 .card {
@@ -293,8 +285,11 @@ input[type="date"] {
   gap: 10px;
 }
 
+.chart-shell {
+  margin-top: 10px;
+}
+
 #chart {
-  margin-top: 9px;
   width: 100%;
   height: min(45vh, 360px);
 }
@@ -302,7 +297,7 @@ input[type="date"] {
 .stats-grid {
   margin-top: 8px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 
@@ -328,6 +323,11 @@ input[type="date"] {
 .stat-item small {
   color: var(--text-soft);
   font-size: 0.74rem;
+}
+
+.stat-item-wind {
+  border-color: rgba(249, 115, 22, 0.18);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 247, 238, 0.88));
 }
 
 .leaflet-control-zoom {

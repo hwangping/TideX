@@ -1,0 +1,80 @@
+{
+  "code": "ro",
+  "label": "Română",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Maree în timp real și prognozate pentru orice coastă din lume",
+    "languageLabel": "Limbă",
+    "mapSection": "Locație și plaje",
+    "locateMe": "Folosește locația mea",
+    "mapHint": "Atinge harta pentru a alege orice coastă. Plajele apropiate sunt listate mai jos.",
+    "nearbyBeaches": "Plaje apropiate",
+    "dateLabel": "Dată",
+    "hourLabel": "Oră",
+    "prevDay": "Ziua precedentă",
+    "now": "Acum",
+    "nextDay": "Ziua următoare",
+    "refresh": "Reîmprospătează",
+    "currentLevel": "Ora selectată",
+    "currentWind": "Rafală la acea oră",
+    "rangeSection": "Perspectivă maree pe 15 zile",
+    "dailyHigh": "Fluxul zilei",
+    "dailyLow": "Refluxul zilei",
+    "disclaimer": "Doar pentru planificare. Nu utiliza ca singura sursă pentru navigație sau siguranță.",
+    "locating": "Se detectează locația...",
+    "locationDenied": "Accesul la locație a fost refuzat. Poți totuși selecta pe hartă.",
+    "locationError": "Localizarea a eșuat. Alege un punct pe hartă.",
+    "locationUnsupported": "Browserul tău nu acceptă geolocalizarea.",
+    "loading": "Se încarcă datele de maree...",
+    "fetchError": "Datele pentru acest punct nu pot fi încărcate acum.",
+    "sourceObserved": "Sursă: Open-Meteo Marine",
+    "sourceHybrid": "Sursă: serie directă + completare armonică",
+    "sourcePredicted": "Sursă: prognoză armonică (rezervă)",
+    "timezoneLabel": "Fus orar: {tz}",
+    "beachCount": "{count} plaje",
+    "noneBeaches": "Nu au fost găsite plaje denumite în apropiere.",
+    "selectedLocation": "Selectat",
+    "myLocation": "Locația mea",
+    "fallbackNotice": "Se folosește prognoza armonică deoarece seria directă nu este disponibilă pentru această dată.",
+    "tideHigh": "Flux",
+    "tideLow": "Reflux",
+    "windowHigh": "max 15 z",
+    "windowLow": "min 15 z"
+  },
+  "seriesLabels": {
+    "tide": "Maree",
+    "wind": "Rafală"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "N",
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW"
+    ],
+    "full": [
+      "Nord",
+      "Nord-est",
+      "Est",
+      "Sud-est",
+      "Sud",
+      "Sud-vest",
+      "Vest",
+      "Nord-vest"
+    ]
+  },
+  "windStrengthLabels": [
+    "Calm",
+    "Ușor",
+    "Briză",
+    "Moderat",
+    "Puternic",
+    "Furtunos"
+  ]
+}

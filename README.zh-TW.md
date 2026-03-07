@@ -1,94 +1,87 @@
 # TideX
 
-TideX 是一個行動裝置優先設計的全球潮汐 Web App。使用者可直接在手機瀏覽器開啟（已部署於 Vercel），在地圖上選擇任意海岸點位，查看即時潮位趨勢與當日高潮精準時間。
+全球任意海岸即時查看與潮汐預測
 
-## 線上存取
+線上應用: [https://tide-x.vercel.app](https://tide-x.vercel.app)
 
-- 正式環境（Vercel）：`https://tide-x.vercel.app`
+## 專案概覽
 
-## 專案定位
+TideX 現在是單一部署的潮汐 Web App。對 GitHub 使用者來說，只需要維護倉庫根目錄這一套程式碼，就能同時覆蓋桌面瀏覽器、手機瀏覽器與主畫面安裝。
 
-- 目標使用者：衝浪、岸釣、海邊旅遊、港口活動與日常潮汐查詢
-- 核心價值：全球選點、可視化清楚、操作流暢、免安裝即可使用
-- 部署型態：純前端靜態網站，可直接部署於 Vercel/GitHub Pages/Netlify
+## 核心能力
 
-## 核心功能
+- 在地圖上選擇任意海岸點，或直接跳到目前定位。
+- 基於 OpenStreetMap 自動尋找附近已命名海灘。
+- 查看 24 小時潮位曲線、高潮時間標記，以及 15 天最高/最低參考線。
+- 在同一視圖中對照潮位、陣風風速與風向。
+- 支援過去、現在與未來日期，超出直接資料視窗時會自動回退到諧波預測。
+- 同一套響應式 PWA 可用於桌面端、行動網頁與主畫面安裝。
 
-- 全球地圖選點：可點選任意海岸位置
-- 自動定位：取得使用者目前位置
-- 附近海灘清單：透過 OpenStreetMap 查詢附近海灘
-- 24 小時潮位曲線：呈現全天潮位變化趨勢
-- 高潮時間標記：在曲線上標示每次高潮的精準時間
-- 時間切換：可選過去、現在與未來日期/小時
-- 預測回退：目標日期缺少直接序列時，自動啟用諧波預測
-- 多語系介面：支援 12 種語言
+## 免費資料來源
 
-## 行動端體驗
+- Open-Meteo Marine：潮汐 / 海平面序列
+- Open-Meteo Forecast：陣風風速與風向
+- OpenStreetMap 瓦片：底圖
+- Overpass API：附近海灘搜尋
+- Nominatim：所選位置反向地理編碼
 
-- 響應式版面：優先適配 iPhone 與 Android
-- 觸控優化：地圖、滑桿與按鈕皆為手指操作優化
-- 視覺設計：現代簡潔、對比清晰，戶外閱讀更直覺
-- 效能策略：前端輕量化，首屏後互動流暢
+## 預測方法
 
-## 資料來源與預測邏輯（全部免費）
+1. 所選位置與日期若有直接潮汐序列，會優先使用直接資料。
+1. 日內曲線採用單調三次插值進行平滑。
+1. 直接資料有缺口時，使用諧波模型補齊。
+1. 沒有直接資料時，回退到諧波潮汐模型進行預測。
+1. 高潮時間會透過局部極值檢測與二次插值進一步細化。
 
-- 海平面/潮汐序列：Open-Meteo Marine API
-- 地圖底圖：OpenStreetMap
-- 海灘 POI：OpenStreetMap Overpass API
-- 反向地理編碼：Nominatim
-- 預測邏輯：缺少目標日期直接資料時，以歷史序列進行諧波擬合預測
+## 安裝為應用程式
 
-## 潮汐預測演算法（簡述）
+1. 在 Safari、Chrome 或其他現代瀏覽器中開啟 [https://tide-x.vercel.app](https://tide-x.vercel.app)。
+1. 透過瀏覽器選單使用「加入主畫面」或「安裝應用程式」。
+1. 安裝後仍使用同一個 Web 部署，但體驗更接近原生 App。
 
-TideX 的預測流程為「優先使用直接資料，缺失時再啟用模型預測」：
+## 國際化
 
-- 直接序列優先：若目標日期可取得海平面小時序列，優先使用該序列。
-- 曲線細化：對小時序列做單調三次插值（Monotone Cubic Interpolation），產生更平滑的高頻曲線。
-- 模型回退：當目標日期缺少直接序列時，使用歷史潮位序列做諧波擬合。
-- 擬合方式：以多組分潮（正弦/餘弦基函數）進行最小平方求解，再產生目標日期潮位曲線。
-- 高潮時間：透過局部極值偵測與二次細化，提升高潮時刻精度。
+- 執行時語言包位於 `locales/`，以 JSON 形式載入。
+- 倉庫內含 42 種語言包，並支援阿拉伯語、希伯來語、烏爾都語等 RTL 佈局。
+- 修改語言檔後，執行 `node scripts/generate-locales.mjs` 以重建 `locales/index.json`。
 
-## 技術棧
+## 專案結構
 
-- 前端：HTML + CSS + JavaScript
-- 地圖：Leaflet
-- 圖表：ECharts
-- 時間處理：Luxon
-- 部署：Vercel（靜態託管）
+```text
+TideX/
+├─ index.html
+├─ styles.css
+├─ app.js
+├─ locales/
+├─ icons/
+├─ manifest.webmanifest
+├─ service-worker.js
+├─ offline.html
+├─ scripts/
+│  ├─ generate-locales.mjs
+│  └─ generate-readmes.mjs
+├─ README.md
+└─ README.<locale>.md
+```
 
 ## 本機開發
+
+用任意靜態檔案伺服器直接啟動倉庫根目錄：
 
 ```bash
 cd TideX
 python3 -m http.server 5173
 ```
 
-開啟：`http://localhost:5173`
+接著開啟 `http://localhost:5173`。
 
-## Vercel 部署建議
+## 部署說明
 
-- Framework Preset：`Other`
-- Build Command：留空（純靜態站）
-- Output Directory：留空（直接部署根目錄）
-- 請啟用 HTTPS（定位權限與行動端體驗更穩定）
-
-## README 語言版本
-
-- English: [`README.en.md`](./README.en.md)
-- 简体中文: [`README.zh-CN.md`](./README.zh-CN.md)
-- 繁體中文: [`README.zh-TW.md`](./README.zh-TW.md)
-- 日本語: [`README.ja.md`](./README.ja.md)
-- 한국어: [`README.ko.md`](./README.ko.md)
-- Français: [`README.fr.md`](./README.fr.md)
-- Español: [`README.es.md`](./README.es.md)
-- Deutsch: [`README.de.md`](./README.de.md)
-- Italiano: [`README.it.md`](./README.it.md)
-- Tiếng Việt: [`README.vi.md`](./README.vi.md)
-- ไทย: [`README.th.md`](./README.th.md)
-- Bahasa Melayu: [`README.ms.md`](./README.ms.md)
+- 將倉庫根目錄部署到 Vercel、Netlify、Cloudflare Pages 或任何靜態主機即可。
+- 不需要建置步驟。
+- 根目錄版本已經包含 PWA manifest、圖示與 service worker。
 
 ## 免責聲明
 
-- 本專案僅供行程與活動參考。
-- 不可作為航行、救援或高風險安全決策的唯一依據。
-- 實際海況會受風、氣壓、地形等因素影響，可能與模型存在差異。
+- TideX 適合行程規劃與海灘資訊參考，不是認證航海導航工具。
+- 真實海況會受到氣壓、湧浪、河流入海、局部地形與天氣等因素影響。

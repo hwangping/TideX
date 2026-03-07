@@ -1,10 +1,12 @@
-const CACHE_NAME = "tidex-ios-v1";
+const CACHE_NAME = "tidex-web-v1";
 const STATIC_ASSETS = [
   "./",
   "./index.html",
-  "./styles.css",
-  "./app.js",
-  "./manifest.webmanifest",
+  "./styles.css?v=20260307-i18n2",
+  "./app.js?v=20260307-i18n2",
+  "./manifest.webmanifest?v=20260307-i18n2",
+  "./locales/en-US.json?v=20260307-i18n2",
+  "./locales/index.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/apple-touch-icon.png",
@@ -56,16 +58,13 @@ self.addEventListener("fetch", (event) => {
 
   if (requestURL.origin === self.location.origin) {
     event.respondWith(
-      caches.match(request).then((cached) => {
-        if (cached) {
-          return cached;
-        }
-        return fetch(request).then((response) => {
+      fetch(request)
+        .then((response) => {
           const cloned = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(request, cloned));
           return response;
-        });
-      })
+        })
+        .catch(() => caches.match(request).then((cached) => cached || caches.match("./offline.html")))
     );
   }
 });

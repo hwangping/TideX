@@ -1,94 +1,87 @@
 # TideX
 
-TideX est une application web de marées conçue en priorité pour mobile. Les utilisateurs peuvent y accéder directement depuis leur navigateur téléphone (déjà déployée sur Vercel), choisir n'importe quel point côtier sur la carte, visualiser la tendance du niveau de la mer et consulter les heures exactes de marée haute.
+Marées en temps réel et prévisions pour toutes les côtes du monde
 
-## Accès en ligne
+Application en ligne: [https://tide-x.vercel.app](https://tide-x.vercel.app)
 
-- Production (Vercel) : `https://tide-x.vercel.app`
+## Présentation
 
-## Positionnement du projet
+TideX est désormais une seule application web de marées déployée depuis la racine du dépôt. Pour les utilisateurs GitHub, cela signifie une base de code unique pour le bureau, le navigateur mobile et l'installation sur l'écran d'accueil.
 
-- Public cible : surf, pêche côtière, activités portuaires, sorties en bord de mer
-- Valeur principale : sélection globale des points, visualisation claire, UX fluide, sans installation
-- Déploiement : frontend statique pur, hébergement facile sur Vercel/GitHub Pages/Netlify
+## Points forts
 
-## Fonctionnalités principales
+- Choisir n'importe quel point côtier sur la carte ou revenir à la position actuelle.
+- Trouver des plages nommées à proximité à partir des données OpenStreetMap.
+- Afficher une courbe de marée sur 24 heures avec heures de pleine mer et lignes de référence sur 15 jours.
+- Comparer hauteur de marée, rafales et direction du vent dans la même vue.
+- Parcourir dates passées, présentes et futures avec repli harmonique hors des fenêtres de données directes.
+- Utiliser la même PWA responsive sur ordinateur, web mobile et écran d'accueil.
 
-- Sélection d'un point côtier n'importe où dans le monde
-- Géolocalisation automatique de l'utilisateur
-- Liste des plages proches via OpenStreetMap
-- Courbe de marée sur 24 heures
-- Marquage des heures de marée haute sur la courbe
-- Navigation temporelle : passé, présent et futur
-- Repli automatique sur une prévision harmonique si la série directe est indisponible
-- Interface multilingue : 12 langues
+## Sources de données gratuites
 
-## Expérience mobile
+- Open-Meteo Marine : séries de marée / niveau marin
+- Open-Meteo Forecast : vitesse des rafales et direction du vent
+- Tuiles OpenStreetMap : carte de base
+- Overpass API : recherche de plages proches
+- Nominatim : géocodage inverse des points sélectionnés
 
-- Mise en page responsive optimisée iPhone/Android
-- Interactions tactiles pour carte, curseur et boutons
-- Design moderne, lisible en extérieur
-- Frontend léger et interaction fluide
+## Approche de prévision
 
-## Sources de données et logique de prévision (100 % gratuites)
+1. Utiliser la série de marée directe lorsqu'elle existe pour le point et la date choisis.
+1. Lisser la courbe quotidienne avec une interpolation cubique monotone.
+1. Combler les lacunes partielles avec une complétion harmonique.
+1. Basculer sur un modèle harmonique quand les données directes sont absentes.
+1. Affiner les heures de pleine mer via détection d'extrêmes locaux et interpolation quadratique.
 
-- Série marée/niveau marin : Open-Meteo Marine API
-- Tuiles de carte : OpenStreetMap
-- POI plages : OpenStreetMap Overpass API
-- Géocodage inverse : Nominatim
-- Prévision : ajustement harmonique à partir de séries historiques si besoin
+## Installer comme application
 
-## Algorithme de Prévision (Résumé)
+1. Ouvrir [https://tide-x.vercel.app](https://tide-x.vercel.app) dans Safari, Chrome ou un navigateur moderne.
+1. Utiliser `Ajouter à l'écran d'accueil` ou `Installer l'application` depuis le menu du navigateur.
+1. Lancer TideX comme une application classique tout en conservant le même déploiement web.
 
-TideX suit une stratégie en deux étapes : données directes d'abord, modèle de repli ensuite.
+## Internationalisation
 
-- Série directe en priorité : si une série horaire existe pour la date cible, elle est utilisée telle quelle.
-- Lissage de courbe : la série horaire est densifiée par interpolation cubique monotone.
-- Repli prédictif : si la série directe manque, TideX ajuste un modèle harmonique à partir de l'historique.
-- Méthode d'ajustement : plusieurs composantes de marée (sinus/cosinus) sont résolues par moindres carrés.
-- Heure de marée haute : les extrema locaux sont détectés puis raffinés par interpolation quadratique.
+- Les packs de langue d'exécution se trouvent dans `locales/` et sont chargés depuis des fichiers JSON.
+- Le dépôt inclut 42 langues, avec prise en charge RTL pour l'arabe, l'hébreu et l'ourdou.
+- Après modification des fichiers de langue, exécuter `node scripts/generate-locales.mjs` pour reconstruire `locales/index.json`.
 
-## Stack technique
+## Structure du projet
 
-- Frontend : HTML + CSS + JavaScript
-- Carte : Leaflet
-- Graphique : ECharts
-- Gestion du temps : Luxon
-- Déploiement : Vercel (statique)
+```text
+TideX/
+├─ index.html
+├─ styles.css
+├─ app.js
+├─ locales/
+├─ icons/
+├─ manifest.webmanifest
+├─ service-worker.js
+├─ offline.html
+├─ scripts/
+│  ├─ generate-locales.mjs
+│  └─ generate-readmes.mjs
+├─ README.md
+└─ README.<locale>.md
+```
 
 ## Développement local
+
+Servir la racine du dépôt avec n'importe quel serveur de fichiers statiques :
 
 ```bash
 cd TideX
 python3 -m http.server 5173
 ```
 
-Ouvrir : `http://localhost:5173`
+Puis ouvrir `http://localhost:5173`.
 
-## Recommandations de déploiement Vercel
+## Déploiement
 
-- Framework Preset : `Other`
-- Build Command : vide (site statique)
-- Output Directory : vide (racine du projet)
-- HTTPS activé recommandé (géolocalisation plus fiable)
-
-## README dans d'autres langues
-
-- English: [`README.en.md`](./README.en.md)
-- 简体中文: [`README.zh-CN.md`](./README.zh-CN.md)
-- 繁體中文: [`README.zh-TW.md`](./README.zh-TW.md)
-- 日本語: [`README.ja.md`](./README.ja.md)
-- 한국어: [`README.ko.md`](./README.ko.md)
-- Français: [`README.fr.md`](./README.fr.md)
-- Español: [`README.es.md`](./README.es.md)
-- Deutsch: [`README.de.md`](./README.de.md)
-- Italiano: [`README.it.md`](./README.it.md)
-- Tiếng Việt: [`README.vi.md`](./README.vi.md)
-- ไทย: [`README.th.md`](./README.th.md)
-- Bahasa Melayu: [`README.ms.md`](./README.ms.md)
+- Déployer la racine du dépôt sur Vercel, Netlify, Cloudflare Pages ou tout hébergement statique.
+- Aucune étape de build n'est nécessaire.
+- L'application racine inclut déjà le manifeste PWA, les icônes et le service worker.
 
 ## Avertissement
 
-- Ce projet est destiné à la planification et à la consultation.
-- Ne pas l'utiliser comme source unique pour la navigation ou la sécurité.
-- Les conditions réelles peuvent différer selon le vent, la pression et la topographie locale.
+- TideX sert à la planification et à l'information littorale, pas à la navigation certifiée.
+- Les conditions réelles peuvent varier selon la pression, la houle, le débit fluvial, la bathymétrie locale et la météo.

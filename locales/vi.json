@@ -1,0 +1,80 @@
+{
+  "code": "vi",
+  "label": "Tiếng Việt",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Triều theo thời gian thực và dự báo cho mọi bờ biển trên thế giới",
+    "languageLabel": "Ngôn ngữ",
+    "mapSection": "Vị trí & bãi biển",
+    "locateMe": "Dùng vị trí của tôi",
+    "mapHint": "Chạm vào bản đồ để chọn bất kỳ bờ biển nào. Các bãi biển gần đó được liệt kê bên dưới.",
+    "nearbyBeaches": "Bãi biển gần đây",
+    "dateLabel": "Ngày",
+    "hourLabel": "Giờ",
+    "prevDay": "Ngày trước",
+    "now": "Hiện tại",
+    "nextDay": "Ngày sau",
+    "refresh": "Làm mới",
+    "currentLevel": "Thời điểm đã chọn",
+    "currentWind": "Gió giật tại thời điểm",
+    "rangeSection": "Toàn cảnh thủy triều 15 ngày",
+    "dailyHigh": "Đỉnh triều trong ngày",
+    "dailyLow": "Chân triều trong ngày",
+    "disclaimer": "Chỉ dùng để tham khảo kế hoạch. Không dùng làm nguồn duy nhất cho điều hướng hay quyết định an toàn.",
+    "locating": "Đang xác định vị trí...",
+    "locationDenied": "Quyền truy cập vị trí bị từ chối. Bạn vẫn có thể chọn trên bản đồ.",
+    "locationError": "Không thể xác định vị trí. Hãy chọn trên bản đồ.",
+    "locationUnsupported": "Trình duyệt của bạn không hỗ trợ định vị.",
+    "loading": "Đang tải dữ liệu thủy triều...",
+    "fetchError": "Hiện không thể tải dữ liệu cho vị trí này.",
+    "sourceObserved": "Nguồn: Open-Meteo Marine",
+    "sourceHybrid": "Nguồn: chuỗi trực tiếp + bổ sung điều hòa",
+    "sourcePredicted": "Nguồn: dự báo điều hòa (dự phòng)",
+    "timezoneLabel": "Múi giờ: {tz}",
+    "beachCount": "{count} bãi biển",
+    "noneBeaches": "Không tìm thấy bãi biển có tên ở gần.",
+    "selectedLocation": "Đã chọn",
+    "myLocation": "Vị trí của tôi",
+    "fallbackNotice": "Đang dùng dự báo điều hòa vì không có chuỗi trực tiếp cho ngày này.",
+    "tideHigh": "Triều cao",
+    "tideLow": "Triều thấp",
+    "windowHigh": "cao 15n",
+    "windowLow": "thấp 15n"
+  },
+  "seriesLabels": {
+    "tide": "Thủy triều",
+    "wind": "Gió giật"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "B",
+      "ĐB",
+      "Đ",
+      "ĐN",
+      "N",
+      "TN",
+      "T",
+      "TB"
+    ],
+    "full": [
+      "Bắc",
+      "Đông Bắc",
+      "Đông",
+      "Đông Nam",
+      "Nam",
+      "Tây Nam",
+      "Tây",
+      "Tây Bắc"
+    ]
+  },
+  "windStrengthLabels": [
+    "Lặng gió",
+    "Nhẹ",
+    "Gió nhẹ",
+    "Trung bình",
+    "Mạnh",
+    "Giông gió"
+  ]
+}

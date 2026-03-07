@@ -1,0 +1,80 @@
+{
+  "code": "hu",
+  "label": "Magyar",
+  "dir": "ltr",
+  "template": false,
+  "messages": {
+    "title": "TideX",
+    "subtitle": "Valós idejű és előrejelzett árapály bármely tengerpartra a világon",
+    "languageLabel": "Nyelv",
+    "mapSection": "Hely és strandok",
+    "locateMe": "Saját helyzet használata",
+    "mapHint": "Érintsd meg a térképet bármely part kiválasztásához. A közeli strandok alább láthatók.",
+    "nearbyBeaches": "Közeli strandok",
+    "dateLabel": "Dátum",
+    "hourLabel": "Idő",
+    "prevDay": "Előző nap",
+    "now": "Most",
+    "nextDay": "Következő nap",
+    "refresh": "Frissítés",
+    "currentLevel": "Kiválasztott idő",
+    "currentWind": "Széllökés ekkor",
+    "rangeSection": "15 napos árapály-kitekintés",
+    "dailyHigh": "Napi dagálycsúcs",
+    "dailyLow": "Napi apálymélypont",
+    "disclaimer": "Csak tervezési tájékoztatásra. Ne használd egyetlen forrásként navigációhoz vagy biztonsági döntésekhez.",
+    "locating": "Helyzet meghatározása...",
+    "locationDenied": "A helyhozzáférés megtagadva. A térképen továbbra is választhatsz.",
+    "locationError": "A helymeghatározás sikertelen. Kérjük, válassz a térképen.",
+    "locationUnsupported": "A böngésződ nem támogatja a helymeghatározást.",
+    "loading": "Árapályadatok betöltése...",
+    "fetchError": "Ehhez a ponthoz most nem tölthetők be adatok.",
+    "sourceObserved": "Forrás: Open-Meteo Marine",
+    "sourceHybrid": "Forrás: közvetlen sorozat + harmonikus kiegészítés",
+    "sourcePredicted": "Forrás: harmonikus előrejelzés (tartalék)",
+    "timezoneLabel": "Időzóna: {tz}",
+    "beachCount": "{count} strand",
+    "noneBeaches": "Nem találhatók névvel ellátott strandok a közelben.",
+    "selectedLocation": "Kiválasztva",
+    "myLocation": "Saját helyem",
+    "fallbackNotice": "Harmonikus előrejelzés használata, mert ehhez a dátumhoz nincs közvetlen sorozat.",
+    "tideHigh": "Dagály",
+    "tideLow": "Apály",
+    "windowHigh": "15 n max",
+    "windowLow": "15 n min"
+  },
+  "seriesLabels": {
+    "tide": "Árapály",
+    "wind": "Széllökés"
+  },
+  "windDirectionLabels": {
+    "short": [
+      "É",
+      "ÉK",
+      "K",
+      "DK",
+      "D",
+      "DNy",
+      "Ny",
+      "ÉNy"
+    ],
+    "full": [
+      "Észak",
+      "Északkelet",
+      "Kelet",
+      "Délkelet",
+      "Dél",
+      "Délnyugat",
+      "Nyugat",
+      "Északnyugat"
+    ]
+  },
+  "windStrengthLabels": [
+    "Szélcsend",
+    "Enyhe",
+    "Szellő",
+    "Mérsékelt",
+    "Erős",
+    "Viharos"
+  ]
+}
